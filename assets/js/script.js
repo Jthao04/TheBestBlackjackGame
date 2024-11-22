@@ -17,7 +17,6 @@ return array;
 }
 
 
-
 function cardBody(number, face) {
     const cardBody = document.createElement("div");
     cardBody.className = "playingCard"
