@@ -18,37 +18,9 @@
 //     console.log(card);
 // }
 
-// Converted to object literal
-class Deck {
-    constructor(howManyDecks = 1) {
-        this.deck = [];
-        for (let i = 0; i < howManyDecks; i++) {
-            for (let i = 0; i < 52; i++) {
-                this.deck.push(i)
-            }
-        }
-        this.shuffle()
-    }
-
-    // This function creates an array to index the cards for the game.  It first creates the 52 indexes sequentially, after doing so it shuffles them into a random order returning the randomized array.
-    shuffle() {
-        let array = this.deck
-        let tmp, current, top = this.deck.length;
-
-        if (top) while (--top) {
-            current = Math.floor(Math.random() * (top + 1));
-            tmp = array[current];
-            array[current] = array[top];
-            array[top] = tmp;
-        }
-        return array;
-
-    }
-}
-
 const deck = {
     deck: [],
-    createDeck: function (howManyDecks = 1) {
+    init: function (howManyDecks = 1) {
         for (let i = 0; i < howManyDecks; i++) {
             for (let i = 0; i < 52; i++) {
                 this.deck.push(i)
@@ -70,27 +42,7 @@ const deck = {
     }
 
 }
-deck.createDeck()
-console.log(deck.deck)
-const classDeck = new Deck;
-console.log(classDeck.deck)
 
-class Board {
-    constructor() {
-        this.dealerBoard = [];
-        this.playerBoard = [];
-
-    }
-    dealToDealer(cardObject) {
-        this.dealerBoard.push(cardObject)
-    }
-
-    dealToPlayer(cardObject) {
-        this.playerBoard.push(cardObject)
-    }
-    // TODO: Create a function that accepts an array of card objects and returns the sum
-    // TODO: Create a function that accepts a board array and returns "under", "blackjack", or "bust"
-}
 
 const board = {
     dealerBoard: [],
@@ -102,7 +54,6 @@ const board = {
         this.playerBoard.push(cardObject)
     }
 }
-console.log(board)
 
 
 /*
@@ -132,51 +83,52 @@ pseudo code/game rules for game logic:
         player = dealer its a push
  
 */
-class Game {
-    constructor() {
-        this.storageKey = "gameSave";
-        this.board = this.loadGame()[0];
-        this.deck = this.loadGame()[1]
-    }
-    saveGame() {
-        localStorage.setItem("board", JSON.stringify(this.board));
-        localStorage.setItem("deck", JSON.stringify(this.deck))
-    }
-    loadGame() {
+
+
+const game = {
+    table: null,
+    deck: null,
+
+    saveGame: function () {
+        localStorage.setItem("board", JSON.stringify(this.table));
+        localStorage.setItem("deck", JSON.stringify(this.deck));
+    },
+
+    loadGame: function () {
         const savedBoardJson = localStorage.getItem("board");
         const savedDeckJson = localStorage.getItem("deck");
 
-        let board = new Board;
-        let deck = new Deck(1)
+        let newBoard = board;
+        let newDeck = deck;
+        newDeck.init()
 
         if (savedBoardJson) {
-            board = JSON.parse(localStorage.getItem("board"));
+            newBoard = JSON.parse(savedBoardJson);
         } else {
-            localStorage.setItem("board", JSON.stringify(board));
+            localStorage.setItem("board", JSON.stringify(newBoard));
         }
 
         if (savedDeckJson) {
-            deck = JSON.parse(localStorage.getItem("deck"));
+            newDeck = JSON.parse(savedDeckJson);
         } else {
-            localStorage.setItem("deck", JSON.stringify(deck))
+            localStorage.setItem("deck", JSON.stringify(newDeck));
         }
 
+        return [newBoard, newDeck];
+    },
 
-        return [board, deck]
+    init: function () {
+        const [board, deck] = this.loadGame();
+        this.table = board;
+        this.deck = deck;
     }
-    // TODO: Create a funtion that clear the current boards
-    clearBoard() { }
-    // TODO: Create a function that replaces the current deck
-    newDeck() { }
-    // TODO: Create a function that returns the winner ('dealer' or 'player') or false if no one has won
-    winner() { }
+};
 
 
-}
+game.init(); // Initialize the game
+console.log(game); // Access the board
 
 // We can load a new game after every round. This will allow us to stash the old boards and keep a history
-const theGame = new Game
-console.log(theGame)
 
 
 class Ui {
