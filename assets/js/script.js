@@ -1,24 +1,24 @@
 
-function extractCard(item) {
-    //13 is the number of cards per suite.  This logic extacts the value and suite of the card which in the deck is represented 0-51 for the 52 cards
-    const cardInfo = { value: item % 13, suite: Math.floor(item / 13) }
-    return cardInfo;
-}
+// function extractCard(item) {
+//     //13 is the number of cards per suite.  This logic extacts the value and suite of the card which in the deck is represented 0-51 for the 52 cards
+//     const cardInfo = { value: item % 13, suite: Math.floor(item / 13) }
+//     return cardInfo;
+// }
 
-// let deck = new Deck;
-let card;
+// // let deck = new Deck;
+// let card;
 
-let times = 58;
-while (times--) {
-    if (deck.deck.length == 0) {
-        deck = new Deck;
-        console.log("new deal");
-    }
-    card = extractCard(deck.deck.pop());
-    console.log(card);
-}
+// let times = 58;
+// while (times--) {
+//     if (deck.deck.length == 0) {
+//         deck = new Deck;
+//         console.log("new deal");
+//     }
+//     card = extractCard(deck.deck.pop());
+//     console.log(card);
+// }
 
-
+// Converted to object literal
 class Deck {
     constructor(howManyDecks = 1) {
         this.deck = [];
@@ -45,15 +45,16 @@ class Deck {
 
     }
 }
+
 const deck = {
     deck: [],
-    createDeck: function () {
+    createDeck: function (howManyDecks = 1) {
         for (let i = 0; i < howManyDecks; i++) {
             for (let i = 0; i < 52; i++) {
-                deck.push(i)
+                this.deck.push(i)
             }
         }
-        shuffle()
+        this.shuffle()
     },
     shuffle: function () {
         let array = this.deck
@@ -69,7 +70,10 @@ const deck = {
     }
 
 }
-console.log(deck)
+deck.createDeck()
+console.log(deck.deck)
+const classDeck = new Deck;
+console.log(classDeck.deck)
 
 class Board {
     constructor() {
