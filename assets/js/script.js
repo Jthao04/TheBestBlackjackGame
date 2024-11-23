@@ -92,6 +92,17 @@ class Board {
     // TODO: Create a function that accepts a board array and returns "under", "blackjack", or "bust"
 }
 
+const board = {
+    dealerBoard: [],
+    playerBoard: [],
+    dealToDealer: function (cardObject) {
+        this.dealerBoard.push(cardObject)
+    },
+    dealToPlayer: function (cardObject) {
+        this.playerBoard.push(cardObject)
+    }
+}
+console.log(board)
 
 
 /*
