@@ -5,7 +5,7 @@ function extractCard(item) {
     return cardInfo;
 }
 
-let deck = new Deck;
+// let deck = new Deck;
 let card;
 
 let times = 58;
@@ -45,7 +45,31 @@ class Deck {
 
     }
 }
+const deck = {
+    deck: [],
+    createDeck: function () {
+        for (let i = 0; i < howManyDecks; i++) {
+            for (let i = 0; i < 52; i++) {
+                deck.push(i)
+            }
+        }
+        shuffle()
+    },
+    shuffle: function () {
+        let array = this.deck
+        let tmp, current, top = this.deck.length;
 
+        if (top) while (--top) {
+            current = Math.floor(Math.random() * (top + 1));
+            tmp = array[current];
+            array[current] = array[top];
+            array[top] = tmp;
+        }
+        return array;
+    }
+
+}
+console.log(deck)
 
 class Board {
     constructor() {
