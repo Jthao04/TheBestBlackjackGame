@@ -1,22 +1,26 @@
 
-// function extractCard(item) {
-//     //13 is the number of cards per suite.  This logic extacts the value and suite of the card which in the deck is represented 0-51 for the 52 cards
-//     const cardInfo = { value: item % 13, suite: Math.floor(item / 13) }
-//     return cardInfo;
-// }
+function extractCard(item) {
+    //13 is the number of cards per suite.  This logic extacts the value and suite of the card which in the deck is represented 0-51 for the 52 cards
+    const cardInfo = { value: item % 13, suite: Math.floor(item / 13) }
+    return cardInfo;
+}
 
-// // let deck = new Deck;
-// let card;
 
-// let times = 58;
-// while (times--) {
-//     if (deck.deck.length == 0) {
-//         deck = new Deck;
-//         console.log("new deal");
-//     }
-//     card = extractCard(deck.deck.pop());
-//     console.log(card);
-// }
+function newDeck() {
+    let newDeck = deck;
+    let card;
+
+    let times = 58;
+    while (times--) {
+        if (newDeck.deck.length == 0) {
+            newDeck = deck;
+            console.log("new deal");
+        }
+        card = extractCard(newDeck.deck.pop());
+        console.log(card);
+    }
+}
+
 
 const deck = {
     deck: [],
@@ -40,7 +44,6 @@ const deck = {
         }
         return array;
     }
-
 }
 
 
