@@ -84,8 +84,6 @@ const game = {
 game.init(); // Initialize the game
 console.log(game); // Access the board
 
-// We can load a new game after every round. This will allow us to stash the old boards and keep a history
-
 function createCard(number, suit) {
     // add one to 0 indexed input number
     const inputNumber = number + 1;
