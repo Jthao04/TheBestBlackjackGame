@@ -43,13 +43,7 @@ drawCard = function(deck){
     return cardInfo;
 }
 
-let deck = deckObject;
-deck.create();
-
-let card = drawCard(deck);
-console.log(card);
-
-
+main
 
 const board = {
     dealerBoard: [],
