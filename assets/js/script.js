@@ -1,50 +1,54 @@
 
-function extractCard(item) {
-    //13 is the number of cards per suite.  This logic extacts the value and suite of the card which in the deck is represented 0-51 for the 52 cards
-    const cardInfo = { value: item % 13, suite: Math.floor(item / 13) }
+const deckObject = {
+    cards : [],
+    numberOfDecks : 1,
+    numberOfCards : 52,
+
+    /*
+     Create 
+     fills the cards array with 52 cards times the number of decks.  
+     It then shuffles the cards by traversing thru the array starting at the end of the array and randomly swapping the values of the index
+    */
+    create : function(){
+        for(let i=0; i < this.numberOfDecks; i++)
+            for(let j=0; j < this.numberOfCards; j++){
+                this.cards.push(j);
+            } 
+
+            let array = this.cards
+            let tmp, current, top = array.length;
+            
+            if (top) while (--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+            }
+            cards = array;
+    },
+}
+
+
+/*  Function: drawcard
+    The purpose for this function is to draw a card from the deck, before doing so it checks to see if there are any cards in the deck, refills and shuffles deck if empty.
+    The method to pull out the value and suit of the card is done by running two math operations on the value of the card that was popped from the deck. 
+*/
+drawCard = function(deck){
+    if(deck.cards.length==0) {
+        deck.create;
+    }
+    let temp = deck.cards.pop();
+
+    const cardInfo = {value : temp % 13, suit: Math.floor(temp/13)};
     return cardInfo;
 }
 
+let deck = deckObject;
+deck.create();
 
-function newDeck() {
-    let newDeck = deck;
-    let card;
+let card = drawCard(deck);
+console.log(card);
 
-    let times = 58;
-    while (times--) {
-        if (newDeck.deck.length == 0) {
-            newDeck = deck;
-            console.log("new deal");
-        }
-        card = extractCard(newDeck.deck.pop());
-        console.log(card);
-    }
-}
-
-
-const deck = {
-    deck: [],
-    init: function (howManyDecks = 1) {
-        for (let i = 0; i < howManyDecks; i++) {
-            for (let i = 0; i < 52; i++) {
-                this.deck.push(i)
-            }
-        }
-        this.shuffle()
-    },
-    shuffle: function () {
-        let array = this.deck
-        let tmp, current, top = this.deck.length;
-
-        if (top) while (--top) {
-            current = Math.floor(Math.random() * (top + 1));
-            tmp = array[current];
-            array[current] = array[top];
-            array[top] = tmp;
-        }
-        return array;
-    }
-}
 
 
 const board = {
