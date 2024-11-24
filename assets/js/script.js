@@ -1,4 +1,49 @@
 
+const deckObject = {
+    cards : [],
+    numberOfDecks : 1,
+    numberOfCards : 52,
+
+    /*
+     Create 
+     fills the cards array with 52 cards times the number of decks.  
+     It then shuffles the cards by traversing thru the array starting at the end of the array and randomly swapping the values of the index
+    */
+    create : function(){
+        for(let i=0; i < this.numberOfDecks; i++)
+            for(let j=0; j < this.numberOfCards; j++){
+                this.cards.push(j);
+            } 
+
+            let array = this.cards
+            let tmp, current, top = array.length;
+            
+            if (top) while (--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+            }
+            cards = array;
+    },
+}
+
+
+/*  Function: drawcard
+    The purpose for this function is to draw a card from the deck, before doing so it checks to see if there are any cards in the deck, refills and shuffles deck if empty.
+    The method to pull out the value and suit of the card is done by running two math operations on the value of the card that was popped from the deck. 
+*/
+drawCard = function(deck){
+    if(deck.cards.length==0) {
+        deck.create;
+    }
+    let temp = deck.cards.pop();
+
+    const cardInfo = {value : temp % 13, suit: Math.floor(temp/13)};
+    return cardInfo;
+}
+
+main
 
 const board = {
     dealerBoard: [],
