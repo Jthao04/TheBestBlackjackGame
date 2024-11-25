@@ -79,7 +79,6 @@ header h1:nth-child(2) {
   /*Manipulations stuff*/
   animation: moveLeftRight 0.5s infinite alternate;
   /*Miscellaneous*/
-  /* Uncomment to start animation */
 }
 
 main {
