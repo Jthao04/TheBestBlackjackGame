@@ -2,12 +2,11 @@
 /* ///////Variable Definitions// */
 /* ///////////////////////////// */
 :root {
-  /*Miscellaneous*/
-  --tableGreen: hsl(140, 82%, 13%);
   --headerBlack: hsl(0, 0%, 2%);
+  --tableBorders: 5px solid var(--tableWhiteFaded);
+  --tableGreen: hsl(140, 82%, 13%);
   --tableWhite: hsl(30, 3%, 69%);
   --tableWhiteFaded: hsla(30, 3%, 69%, 0.8);
-  --tableBorders: 5px solid var(--tableWhiteFaded);
 }
 
 /* ///////////////////////////// */
@@ -44,60 +43,45 @@
 *,
 *::before,
 *::after {
-  /*Box model stuff*/
-  margin: 0;
-  /*Miscellaneous*/
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  /*Box model stuff*/
-  width: 100vw;
-  height: 100vh;
   background-color: hsl(0, 93%, 5%);
-  /*Typography stuff*/
+  height: 100vh;
   text-align: center;
+  width: 100vw;
 }
 
 /* ///////////////////////////// */
 /* ///////Header Styles///////// */
 /* ///////////////////////////// */
 header {
-  /*Display stuff*/
-  display: flex;
   align-items: center;
-  justify-content: center;
-  /*Positioning stuff*/
-  position: relative;
-  /*Box model stuff*/
-  width: 100%;
-  height: 10vh;
+  background-color: var(--headerBlack);
   border: 10px black double;
   border-radius: 10px;
-  background-color: var(--headerBlack);
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  position: relative;
+  width: 100%;
 }
 header h1 {
-  /*Display stuff*/
+  clip-path: inset(0 0 10% 0);
   display: flex;
-  /*Positioning stuff*/
-  z-index: 1;
-  /*Box model stuff*/
-  margin: 0;
-  /*Typography stuff*/
   font-family: casinoSign3d;
   font-size: clamp(30px, 4vw, 500px);
-  /*Manipulations stuff*/
+  margin: 0;
   transform: translateY(8%);
-  /*Miscellaneous*/
-  clip-path: inset(0 0 10% 0);
+  z-index: 1;
 }
 header h1:nth-child(2) {
-  /*Positioning stuff*/
+  color: yellow;
   position: absolute;
   z-index: 0;
-  /*Typography stuff*/
-  color: yellow;
-  /*Manipulations stuff*/
+
   /* animation: moveLeftRight 0.5s infinite alternate; */
 }
 
@@ -105,43 +89,35 @@ header h1:nth-child(2) {
 /* ///////Main Styles/////////// */
 /* ///////////////////////////// */
 main {
-  /*Display stuff*/
   display: flex;
-  justify-content: center;
-  /*Box model stuff*/
+  flex-direction: column;
   height: calc(100vh - 15vh);
   padding: 5px;
+  position: relative;
 }
 
 /* ///////////////////////////// */
 /* ///////Game Table Styles///// */
 /* ///////////////////////////// */
 .table {
-  /*Display stuff*/
-  display: grid;
-  grid-template-rows: 3fr 4fr;
-  /*Box model stuff*/
-  width: 100%;
-  height: 100%;
-  padding: 2rem;
+  background-color: var(--tableGreen);
   border: var(--tableBorders);
   border-radius: 20px 20px 50% 50%;
-  background-color: var(--tableGreen);
-  /*Miscellaneous*/
+  display: grid;
   gap: 5vh;
+  grid-template-rows: 3fr 4fr;
+  height: 100%;
+  padding: 2rem;
+  width: 100%;
 }
 
 /* Play Areas */
 .table > div {
-  /*Display stuff*/
-  justify-self: center;
-  /*Positioning stuff*/
-  position: relative;
-  /*Box model stuff*/
-  width: clamp(300px, 25%, 25%);
-  /* aspect-ratio: 1 /1; */
   border: var(--tableBorders);
   border-radius: 10px;
+  justify-self: center;
+  position: relative;
+  width: clamp(300px, 25%, 25%);
 }
 @media screen and (max-width: 600px) {
   .table > div:nth-child(2) {
@@ -151,43 +127,43 @@ main {
 
 /* Play Area Header */
 .table > div > h2 {
-  /*Positioning stuff*/
-  position: absolute;
-  left: 50%;
-  top: -1.25rem;
-  /*Typography stuff*/
-  font-family: boardFont;
-  font-size: clamp(40px, 2vw, 2vw);
-  color: var(--tableWhiteFaded);
-  /*Manipulations stuff*/
-  transform: translateX(-50%);
   background-color: var(--tableGreen);
   border: var(--tableBorders);
   border-radius: 10px;
+  color: var(--tableWhiteFaded);
+  font-family: boardFont;
+  font-size: clamp(40px, 2vw, 2vw);
+  left: 50%;
   padding: 5px;
+  position: absolute;
+  top: -1.25rem;
+  transform: translateX(-50%);
 }
 
 /* ///////////////////////////// */
 /* ////////Card Styles////////// */
 /* ///////////////////////////// */
 .playingCard {
-  /*Box model stuff*/
-  margin-left: -70px;
-  /*Miscellaneous*/
   box-shadow: -5px 5px 5px black;
+  margin-left: -70px;
 }
 
 /* ///////////////////////////// */
 /* ///////ScoreBoard Styles///// */
 /* ///////////////////////////// */
+.score {
+  color: var(--tableWhiteFaded);
+  display: flex;
+  justify-content: space-between;
+}
 .score h3 {
-  /*Typography stuff*/
-  font-size: 35px;
+  font-size: clamp(1px, 3vw, 35px);
 }
 
+.score > div {
+  display: flex;
+  justify-content: space-between;
+}
 .score p {
-  /*Display stuff*/
-  flex: 1;
-  /*Typography stuff*/
-  font-size: 35px;
+  font-size: clamp(10px, 3vw, 35px);
 }
