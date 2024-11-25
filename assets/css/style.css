@@ -1,11 +1,6 @@
-*,
-*::before,
-*::after {
-  /*Box model stuff*/
-  margin: 0;
-  /*Miscellaneous*/
-  box-sizing: border-box;
-}
+/* ///////////////////////////// */
+/* ///////Variable Definitions// */
+/* ///////////////////////////// */
 :root {
   /*Miscellaneous*/
   --boardGreen: hsl(140, 82%, 13%);
@@ -13,6 +8,9 @@
   --tableBorders: 5px solid rgb(179, 177, 175);
 }
 
+/* ///////////////////////////// */
+/* //////Font Definitions/////// */
+/* ///////////////////////////// */
 @font-face {
   font-family: casinoSign3d;
   src: url(../fonts/Casino3DLinesMarquee.ttf);
@@ -22,6 +20,9 @@
   src: url(../fonts/CasinoShadow.ttf);
 }
 
+/* ///////////////////////////// */
+/* ////Animation Definitions//// */
+/* ///////////////////////////// */
 @keyframes moveLeftRight {
   0% {
     transform: translate(0, 8%);
@@ -30,6 +31,19 @@
     transform: translate(0.05rem, 8%);
   }
 }
+
+/* ///////////////////////////// */
+/* ////Page Styles//// */
+/* ///////////////////////////// */
+*,
+*::before,
+*::after {
+  /*Box model stuff*/
+  margin: 0;
+  /*Miscellaneous*/
+  box-sizing: border-box;
+}
+
 body {
   /*Box model stuff*/
   width: 100vw;
@@ -37,10 +51,11 @@ body {
   background-color: hsl(0, 92%, 5%);
   /*Typography stuff*/
   text-align: center;
-  /*Miscellaneous*/
-  /* overflow: hidden; */
 }
 
+/* ///////////////////////////// */
+/* ///////Header Styles//////// */
+/* ///////////////////////////// */
 header {
   /*Display stuff*/
   display: flex;
@@ -77,10 +92,12 @@ header h1:nth-child(2) {
   /*Typography stuff*/
   color: yellow;
   /*Manipulations stuff*/
-  animation: moveLeftRight 0.5s infinite alternate;
-  /*Miscellaneous*/
+  /* animation: moveLeftRight 0.5s infinite alternate; */
 }
 
+/* ///////////////////////////// */
+/* ///////Main Styles////////// */
+/* ///////////////////////////// */
 main {
   /*Display stuff*/
   display: flex;
@@ -90,6 +107,9 @@ main {
   padding: 5px;
 }
 
+/* ///////////////////////////// */
+/* ///////Game Table Styles//// */
+/* ///////////////////////////// */
 .table {
   /*Display stuff*/
   display: grid;
@@ -110,13 +130,20 @@ main {
   border-radius: 10px;
 }
 
+/* ///////////////////////////// */
+/* ///////Card Styles////////// */
+/* ///////////////////////////// */
 .playingCard {
   /*Box model stuff*/
   margin-left: -70px;
   /*Miscellaneous*/
   box-shadow: -5px 5px 5px black;
 }
-h3 {
+
+/* ///////////////////////////// */
+/* ///////ScoreBoard Styles//// */
+/* ///////////////////////////// */
+.score h3 {
   /*Typography stuff*/
   font-size: 35px;
 }
