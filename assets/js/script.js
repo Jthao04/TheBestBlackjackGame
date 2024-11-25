@@ -1,3 +1,4 @@
+// merge test
 function createCard(number, suit) {
     // add one to 0 indexed input number
     const inputNumber = number + 1;
