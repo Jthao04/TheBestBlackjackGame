@@ -7,6 +7,7 @@
 :root {
   --replaceMeBrown: hsl(23, 44%, 14%);
   --boardGreen: hsl(140, 82%, 13%);
+  --tableBorders: 5px solid rgb(179, 177, 175);
 }
 
 @font-face {
@@ -39,11 +40,12 @@ header {
   justify-content: center;
   align-items: center;
   background-color: var(--replaceMeBrown);
-  height: fit-content;
+  height: 10;
   width: 100%;
   position: relative;
   border: 10px black double;
   border-radius: 10px;
+  line-height: 0;
 }
 header h1 {
   font-size: clamp(30px, 4vw, 500px);
@@ -62,7 +64,7 @@ header h1:nth-child(2) {
 main {
   display: flex;
   justify-content: center;
-  height: calc(100% - 9vh);
+  height: calc(100vh - 15vh);
   padding: 5px;
 }
 
@@ -72,12 +74,14 @@ main {
   background-color: var(--boardGreen);
   width: 100%;
   height: 100%;
-
+  border: var(--tableBorders);
   border-radius: 20px;
+  padding: 8px;
+  gap: 8px;
 }
 .table > div {
-  border: solid black;
-  border-radius: inherit;
+  border: var(--tableBorders);
+  border-radius: 10px;
 }
 
 .playingCard {
