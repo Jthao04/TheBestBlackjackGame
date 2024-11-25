@@ -5,7 +5,7 @@
   margin: 0;
 }
 :root {
-  --replaceMeBrown: hsl(23, 44%, 14%);
+  --replaceMeBrown: hsl(0, 0%, 2%);
   --boardGreen: hsl(140, 82%, 13%);
   --tableBorders: 5px solid rgb(179, 177, 175);
 }
@@ -28,7 +28,7 @@
   }
 }
 body {
-  background-color: hsl(0, 85%, 11%);
+  background-color: hsl(0, 92%, 5%);
   text-align: center;
   height: 100vh;
   width: 100vw;
@@ -40,7 +40,7 @@ header {
   justify-content: center;
   align-items: center;
   background-color: var(--replaceMeBrown);
-  height: 10;
+  height: 10vh;
   width: 100%;
   position: relative;
   border: 10px black double;
