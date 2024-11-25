@@ -5,7 +5,7 @@
   margin: 0;
 }
 :root {
-  --replaceMeBrown: hsl(0, 0%, 2%);
+  --darkGray: hsl(0, 0%, 2%);
   --boardGreen: hsl(140, 82%, 13%);
   --tableBorders: 5px solid rgb(179, 177, 175);
 }
@@ -21,10 +21,10 @@
 
 @keyframes moveLeftRight {
   0% {
-    transform: translateX(0);
+    transform: translate(0, 10%);
   }
   100% {
-    transform: translateX(1px);
+    transform: translate(1px, 10%);
   }
 }
 body {
@@ -39,24 +39,26 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--replaceMeBrown);
+  background-color: var(--darkGray);
   height: 10vh;
   width: 100%;
   position: relative;
   border: 10px black double;
   border-radius: 10px;
-  line-height: 0;
 }
 header h1 {
   font-size: clamp(30px, 4vw, 500px);
   font-family: casinoSign3d;
   z-index: 1;
   display: flex;
+  margin: 0;
+  clip-path: inset(0 0 10% 0);
+  transform: translateY(10%);
 }
 header h1:nth-child(2) {
   position: absolute;
   /* Uncomment to start animation */
-  /* animation: moveLeftRight 0.5s infinite alternate; */
+  animation: moveLeftRight 0.5s infinite alternate;
   z-index: 0;
   color: yellow;
 }
