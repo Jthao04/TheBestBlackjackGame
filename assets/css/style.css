@@ -1,10 +1,13 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  /*Box model stuff*/
   margin: 0;
+  /*Miscellaneous*/
+  box-sizing: border-box;
 }
 :root {
+  /*Miscellaneous*/
   --boardGreen: hsl(140, 82%, 13%);
   --darkGray: hsl(0, 0%, 2%);
   --tableBorders: 5px solid rgb(179, 177, 175);
@@ -28,75 +31,100 @@
   }
 }
 body {
-  background-color: hsl(0, 92%, 5%);
-  height: 100vh;
-  text-align: center;
+  /*Box model stuff*/
   width: 100vw;
-
+  height: 100vh;
+  background-color: hsl(0, 92%, 5%);
+  /*Typography stuff*/
+  text-align: center;
+  /*Miscellaneous*/
   /* overflow: hidden; */
 }
 
 header {
+  /*Display stuff*/
+  display: flex;
   align-items: center;
-  background-color: var(--darkGray);
+  justify-content: center;
+  /*Positioning stuff*/
+  position: relative;
+  /*Box model stuff*/
+  width: 100%;
+  height: 10vh;
   border: 10px black double;
   border-radius: 10px;
-  display: flex;
-  height: 10vh;
-  justify-content: center;
-  position: relative;
-  width: 100%;
+  background-color: var(--darkGray);
 }
 header h1 {
-  clip-path: inset(0 0 10% 0);
+  /*Display stuff*/
   display: flex;
+  /*Positioning stuff*/
+  z-index: 1;
+  /*Box model stuff*/
+  margin: 0;
+  /*Typography stuff*/
   font-family: casinoSign3d;
   font-size: clamp(30px, 4vw, 500px);
-  margin: 0;
+  /*Manipulations stuff*/
   transform: translateY(8%);
-  z-index: 1;
+  /*Miscellaneous*/
+  clip-path: inset(0 0 10% 0);
 }
 header h1:nth-child(2) {
-  animation: moveLeftRight 0.5s infinite alternate;
-  color: yellow;
+  /*Positioning stuff*/
   position: absolute;
   z-index: 0;
-
+  /*Typography stuff*/
+  color: yellow;
+  /*Manipulations stuff*/
+  animation: moveLeftRight 0.5s infinite alternate;
+  /*Miscellaneous*/
   /* Uncomment to start animation */
 }
 
 main {
+  /*Display stuff*/
   display: flex;
-  height: calc(100vh - 15vh);
   justify-content: center;
+  /*Box model stuff*/
+  height: calc(100vh - 15vh);
   padding: 5px;
 }
 
 .table {
-  background-color: var(--boardGreen);
-  border: var(--tableBorders);
-  border-radius: 20px;
+  /*Display stuff*/
   display: grid;
-  gap: 8px;
   grid-template-rows: 1fr 2fr;
+  /*Box model stuff*/
+  width: 100%;
   height: 100%;
   padding: 8px;
-  width: 100%;
+  border: var(--tableBorders);
+  border-radius: 20px;
+  background-color: var(--boardGreen);
+  /*Miscellaneous*/
+  gap: 8px;
 }
 .table > div {
+  /*Box model stuff*/
   border: var(--tableBorders);
   border-radius: 10px;
 }
 
 .playingCard {
-  box-shadow: -5px 5px 5px black;
+  /*Box model stuff*/
   margin-left: -70px;
+  /*Miscellaneous*/
+  box-shadow: -5px 5px 5px black;
 }
 h3 {
+  /*Typography stuff*/
   font-size: 35px;
 }
 
 .score p {
+  /*Display stuff*/
   flex: 1;
+  /*Typography stuff*/
   font-size: 35px;
 }
