@@ -31,7 +31,7 @@ body {
   text-align: center;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 header {
@@ -39,15 +39,15 @@ header {
   justify-content: center;
   align-items: center;
   background-color: var(--replaceMeBrown);
-  height: 20vh;
+  height: 9vh;
   width: 100%;
-  min-height: 140px;
+
   position: relative;
   border: 10px black double;
   border-radius: 10px;
 }
 header h1 {
-  font-size: clamp(30px, 10vw, 500px);
+  font-size: clamp(30px, 4vw, 500px);
   font-family: casinoSign3d;
   z-index: 1;
   display: flex;
@@ -62,10 +62,17 @@ header h1:nth-child(2) {
 }
 
 main {
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
+  height: calc(100% - 9vh);
+}
+
+.table {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  background-color: var(--boardGreen);
+  width: 90%;
+  height: 100%;
 }
 
 @media screen and (min-width: 1000px) {
@@ -78,8 +85,6 @@ main {
     border-radius: 0 0 45vw 45vw;
   }
 }
-/* @media screen and (max-width: 600px) {
-} */
 
 .table > div {
   border: solid black;
