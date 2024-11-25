@@ -29,6 +29,9 @@
 body {
   background-color: hsl(0, 85%, 11%);
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 header {
@@ -52,53 +55,40 @@ header h1 {
 }
 header h1:nth-child(2) {
   position: absolute;
-  animation: moveLeftRight 0.5s infinite alternate;
+  /* Uncomment to start animation */
+  /* animation: moveLeftRight 0.5s infinite alternate; */
   z-index: 0;
   color: yellow;
 }
 
 main {
   height: 100%;
-  display: flex;
-}
-
-.table {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 1.5rem;
-  background-color: var(--boardGreen);
-
-  flex-shrink: 0;
-  width: 60vw;
-  height: 30vw;
-  border-radius: 0 0 30vw 30vw;
-}
-.table > div {
-  position: relative;
-  border: solid black;
-  border-radius: 50%;
-  padding: 1rem;
-  padding-bottom: 5px;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: end;
 }
+
+@media screen and (min-width: 1000px) {
+  .table {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    background-color: var(--boardGreen);
+    width: 90vw;
+    height: 45vw;
+    border-radius: 0 0 45vw 45vw;
+  }
+}
+/* @media screen and (max-width: 600px) {
+} */
+
+.table > div {
+  border: solid black;
+}
+
 .playingCard {
   margin-left: -70px;
   box-shadow: -5px 5px 5px black;
 }
-.table h2 {
-  position: absolute;
-  top: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: casinoSign;
-  font-size: 3rem;
-  background-color: var(--boardGreen);
-  border: solid black;
-  border-radius: 10px;
-}
-
 h3 {
   font-size: 35px;
 }
