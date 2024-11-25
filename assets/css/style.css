@@ -3,9 +3,11 @@
 /* ///////////////////////////// */
 :root {
   /*Miscellaneous*/
-  --boardGreen: hsl(140, 82%, 13%);
-  --darkGray: hsl(0, 0%, 2%);
-  --tableBorders: 5px solid rgb(179, 177, 175);
+  --tableGreen: hsl(140, 82%, 13%);
+  --headerBlack: hsl(0, 0%, 2%);
+  --tableWhite: hsl(30, 3%, 69%);
+  --tableWhiteFaded: hsla(30, 3%, 69%, 0.8);
+  --tableBorders: 5px solid var(--tableWhiteFaded);
 }
 
 /* ///////////////////////////// */
@@ -18,6 +20,10 @@
 @font-face {
   font-family: casinoSign;
   src: url(../fonts/CasinoShadow.ttf);
+}
+@font-face {
+  font-family: boardfont;
+  src: url(../fonts/grandCasinoRegular.otf);
 }
 
 /* ///////////////////////////// */
@@ -33,7 +39,7 @@
 }
 
 /* ///////////////////////////// */
-/* ////Page Styles//// */
+/* /////////Page Styles///////// */
 /* ///////////////////////////// */
 *,
 *::before,
@@ -48,13 +54,13 @@ body {
   /*Box model stuff*/
   width: 100vw;
   height: 100vh;
-  background-color: hsl(0, 92%, 5%);
+  background-color: hsl(0, 93%, 5%);
   /*Typography stuff*/
   text-align: center;
 }
 
 /* ///////////////////////////// */
-/* ///////Header Styles//////// */
+/* ///////Header Styles///////// */
 /* ///////////////////////////// */
 header {
   /*Display stuff*/
@@ -68,7 +74,7 @@ header {
   height: 10vh;
   border: 10px black double;
   border-radius: 10px;
-  background-color: var(--darkGray);
+  background-color: var(--headerBlack);
 }
 header h1 {
   /*Display stuff*/
@@ -96,7 +102,7 @@ header h1:nth-child(2) {
 }
 
 /* ///////////////////////////// */
-/* ///////Main Styles////////// */
+/* ///////Main Styles/////////// */
 /* ///////////////////////////// */
 main {
   /*Display stuff*/
@@ -108,30 +114,61 @@ main {
 }
 
 /* ///////////////////////////// */
-/* ///////Game Table Styles//// */
+/* ///////Game Table Styles///// */
 /* ///////////////////////////// */
 .table {
   /*Display stuff*/
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 3fr 4fr;
   /*Box model stuff*/
   width: 100%;
   height: 100%;
-  padding: 8px;
+  padding: 2rem;
   border: var(--tableBorders);
-  border-radius: 20px;
-  background-color: var(--boardGreen);
+  border-radius: 20px 20px 50% 50%;
+  background-color: var(--tableGreen);
   /*Miscellaneous*/
-  gap: 8px;
+  gap: 5vh;
 }
+
+/* Play Areas */
 .table > div {
+  /*Display stuff*/
+  justify-self: center;
+  /*Positioning stuff*/
+  position: relative;
   /*Box model stuff*/
+  width: clamp(300px, 25%, 25%);
+  /* aspect-ratio: 1 /1; */
   border: var(--tableBorders);
   border-radius: 10px;
 }
+@media screen and (max-width: 600px) {
+  .table > div:nth-child(2) {
+    border-radius: 10px 10px 50% 50%;
+  }
+}
+
+/* Play Area Header */
+.table > div > h2 {
+  /*Positioning stuff*/
+  position: absolute;
+  left: 50%;
+  top: -1.25rem;
+  /*Typography stuff*/
+  font-family: boardFont;
+  font-size: clamp(40px, 2vw, 2vw);
+  color: var(--tableWhiteFaded);
+  /*Manipulations stuff*/
+  transform: translateX(-50%);
+  background-color: var(--tableGreen);
+  border: var(--tableBorders);
+  border-radius: 10px;
+  padding: 5px;
+}
 
 /* ///////////////////////////// */
-/* ///////Card Styles////////// */
+/* ////////Card Styles////////// */
 /* ///////////////////////////// */
 .playingCard {
   /*Box model stuff*/
@@ -141,7 +178,7 @@ main {
 }
 
 /* ///////////////////////////// */
-/* ///////ScoreBoard Styles//// */
+/* ///////ScoreBoard Styles///// */
 /* ///////////////////////////// */
 .score h3 {
   /*Typography stuff*/
