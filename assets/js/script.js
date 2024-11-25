@@ -26,7 +26,7 @@ const deckObject = {
                 array[top] = tmp;
             }
             cards = array;
-    },
+    }
 }
 
 
@@ -43,8 +43,6 @@ drawCard = function(deck){
     const cardInfo = {value : temp % 13, suit: Math.floor(temp/13)};
     return cardInfo;
 }
-
-main
 
 const board = {
     dealerBoard: [],
