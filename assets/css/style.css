@@ -28,6 +28,7 @@
 }
 body {
   background-color: hsl(0, 85%, 11%);
+  text-align: center;
 }
 
 header {
@@ -90,4 +91,12 @@ header h1:nth-child(2) {
   background-color: var(--boardGreen);
   border: solid black;
   border-radius: 10px;
+}
+
+h3 {
+  font-size: 35px;
+}
+
+.score p {
+  font-size: 35px;
 }
