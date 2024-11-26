@@ -114,8 +114,8 @@ header h1:nth-child(2) {
   color: yellow;
   position: absolute;
   z-index: 0;
-
-  /* animation: moveLeftRight 0.5s infinite alternate; */
+  /* Comment out to stop animation in header */
+  animation: moveLeftRight 0.5s infinite alternate;
 }
 
 /* ///////////////////////////// */
@@ -218,6 +218,7 @@ main {
   border-radius: 5px;
 }
 /* The next 3 rules animate a deck of card */
+/* add the class .animate to a deck */
 .animate :nth-child(1) {
   animation: rotateLeft 0.3s infinite alternate;
 }
