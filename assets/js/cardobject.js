@@ -18,7 +18,7 @@ function createCard(number, suit) {
         function createSpan() {
             const span = document.createElement("span");
             span.style.position = "absolute";
-            span.style.fontSize = "1.5vw";
+            span.style.fontSize = "clamp(16px, 4vw, 50px)";
             span.style.fontWeight = "bolder";
             span.style.fontFamily = "serif";
             span.style.color = color;
@@ -32,11 +32,11 @@ function createCard(number, suit) {
         const span1 = createSpan()
 
         // Position each span individually and rotate the second
-        span0.style.left = "1em";
-        span0.style.top = "1em";
+        span0.style.left = "10px";
+        span0.style.top = "10px";
 
-        span1.style.right = "1em";
-        span1.style.bottom = "1em"
+        span1.style.right = "10px";
+        span1.style.bottom = "10px"
         span1.style.transform = "rotate(180deg)";
 
         if (inputNumber === 1) {
