@@ -1,3 +1,5 @@
+/* this is a test */
+
 /* ///////////////////////////// */
 /* ///////Variable Definitions// */
 /* ///////////////////////////// */
@@ -7,6 +9,7 @@
   --tableGreen: hsl(140, 82%, 13%);
   --tableWhite: hsl(30, 3%, 69%);
   --tableWhiteFaded: hsla(30, 3%, 69%, 0.8);
+  --translucentGray: hsla(0, 0%, 2%, 0.6);
 }
 
 /* ///////////////////////////// */
@@ -24,7 +27,10 @@
   font-family: boardfont;
   src: url(../fonts/grandCasinoRegular.otf);
 }
-
+@font-face {
+  font-family: boardNumber;
+  src: url(../fonts/boardNumbers.ttf);
+}
 /* ///////////////////////////// */
 /* ////Animation Definitions//// */
 /* ///////////////////////////// */
@@ -34,6 +40,30 @@
   }
   100% {
     transform: translate(0.05rem, 8%);
+  }
+}
+@keyframes rotateLeft {
+  0% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(-1vw) rotate(-5deg);
+  }
+}
+@keyframes rotateRight {
+  0% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(1vw) rotate(5deg);
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(10px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-1vw) rotate(-1deg);
   }
 }
 
@@ -52,6 +82,9 @@ body {
   height: 100vh;
   text-align: center;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* ///////////////////////////// */
@@ -112,7 +145,7 @@ main {
 }
 
 /* Play Areas */
-.table > div {
+.playArea {
   border: var(--tableBorders);
   border-radius: 10px;
   justify-self: center;
@@ -121,13 +154,13 @@ main {
   height: calc(100% - 20px);
 }
 @media screen and (max-width: 600px) {
-  .table > div:nth-child(2) {
+  .playArea:nth-child(2) {
     border-radius: 10px 10px 50% 50%;
   }
 }
 
 /* Play Area Header */
-.table > div > h2 {
+.playArea > h2 {
   background-color: var(--tableGreen);
   border: var(--tableBorders);
   border-radius: 10px;
@@ -153,18 +186,69 @@ main {
 /* ///////ScoreBoard Styles///// */
 /* ///////////////////////////// */
 .score {
-  color: var(--tableWhiteFaded);
-  display: flex;
+  color: var(--tableWhite);
   justify-content: space-between;
-}
-.score h3 {
-  font-size: clamp(1px, 3vw, 35px);
+  position: absolute;
+  top: 2vw;
+  right: -6vw;
+  border-radius: 10px;
+  font-family: boardNumber;
+  font-size: 4vw;
+  padding: 1vw;
+  color: var(--tableWhiteFaded);
 }
 
-.score > div {
+/* .score h3 {
+  font-size: clamp(1px, 3vw, 35px);
+} */
+/* .score p {
+  font-size: clamp(10px, 3vw, 35px);
+} */
+
+/* ///////////////////////////// */
+/* ///////Card Deck Styling///// */
+/* ///////////////////////////// */
+.deck {
+  position: absolute;
+}
+.deck > img {
+  position: absolute;
+  width: 10vw;
+  height: auto;
+  border-radius: 5px;
+}
+/* The next 3 rules animate a deck of card */
+.animate :nth-child(1) {
+  animation: rotateLeft 0.3s infinite alternate;
+}
+.animate :nth-child(2) {
+  animation: rotateRight 0.4s infinite alternate;
+}
+.animate :last-child {
+  animation: slideDown 0.4s infinite alternate;
+}
+/* ///////////////////////////// */
+/* ///////Playing Buttons/////// */
+/* ///////////////////////////// */
+#playButtons {
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
+  height: 100px;
 }
-.score p {
-  font-size: clamp(10px, 3vw, 35px);
+#playButtons > button {
+  width: 100px;
+  font-family: boardFont;
+  font-size: 2rem;
+}
+
+/* ///////////////////////////// */
+/* //////////Footer///////////// */
+/* ///////////////////////////// */
+footer {
+  margin-top: 1rem;
+  flex: 1;
+  background-color: var(--translucentGray);
+  padding: 2px;
+  color: var(--tableWhite);
 }
