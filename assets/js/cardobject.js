@@ -6,7 +6,7 @@ function createCard(number, suit) {
     cardBody.className = "playingCard"
     cardBody.style.backgroundColor = "hsl(48, 39%, 83%)";
     cardBody.style.display = "flex";
-    cardBody.style.width = "12vw";
+    cardBody.style.width = "12vh";
     cardBody.style.height = "80%";
     cardBody.style.borderRadius = "10px";
     cardBody.style.position = "relative";
@@ -18,7 +18,7 @@ function createCard(number, suit) {
         function createSpan() {
             const span = document.createElement("span");
             span.style.position = "absolute";
-            span.style.fontSize = "clamp(16px, 4vw, 50px)";
+            span.style.fontSize = "clamp(16px, 2vw, 50px)";
             span.style.fontWeight = "bolder";
             span.style.fontFamily = "serif";
             span.style.color = color;
