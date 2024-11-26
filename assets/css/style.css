@@ -10,6 +10,7 @@
   --tableWhite: hsl(30, 3%, 69%);
   --tableWhiteFaded: hsla(30, 3%, 69%, 0.8);
   --translucentGray: hsla(0, 0%, 2%, 0.6);
+  --shadow: -5px 5px 5px black;
 }
 
 /* ///////////////////////////// */
@@ -184,7 +185,7 @@ main {
 /* ////////Card Styles////////// */
 /* ///////////////////////////// */
 .playingCard {
-  box-shadow: -5px 5px 5px black;
+  box-shadow: var(--shadow);
   margin-left: -30px;
   margin-top: -20px;
 }
@@ -223,6 +224,7 @@ main {
   width: 10vw;
   height: auto;
   border-radius: 5px;
+  box-shadow: var(--shadow);
 }
 /* The next 3 rules animate a deck of card */
 .animate :nth-child(1) {
