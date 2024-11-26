@@ -105,7 +105,7 @@ main {
   border-radius: 20px 20px 50% 50%;
   display: grid;
   gap: 5vh;
-  grid-template-rows: 3fr 4fr;
+  grid-template-rows: 1fr 1fr;
   height: 100%;
   padding: 2rem;
   width: 100%;
@@ -117,7 +117,8 @@ main {
   border-radius: 10px;
   justify-self: center;
   position: relative;
-  width: clamp(300px, 25%, 25%);
+  width: clamp(300px, 50%, 50%);
+  height: calc(100% - 20px);
 }
 @media screen and (max-width: 600px) {
   .table > div:nth-child(2) {

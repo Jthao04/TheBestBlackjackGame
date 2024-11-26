@@ -244,5 +244,3 @@ const game = {};
 
 
 
-// UI function library
-
