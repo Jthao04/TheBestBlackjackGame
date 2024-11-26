@@ -239,23 +239,3 @@ pseudo code/game rules for game logic:
  
 */
 const game = {};
-
-
-
-
-
-const playerArea = document.querySelector("#player");
-const dealerArea = document.querySelector("#dealer");
-
-for (let i = 0; i < 1; i++) {
-    const card = createCard(i, "club")
-    const card1 = createCard(i, "heart")
-    playerArea.append(card)
-    dealerArea.append(card1)
-}
-for (let i = 0; i < 1; i++) {
-    const card = createCard(i, "spade")
-    const card1 = createCard(i, "diamond")
-    playerArea.append(card1)
-    dealerArea.append(card)
-}
