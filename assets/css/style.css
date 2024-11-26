@@ -36,10 +36,10 @@
 /* ///////////////////////////// */
 @keyframes moveLeftRight {
   0% {
-    transform: translate(0, 8%);
+    transform: translate(0, 4%);
   }
   100% {
-    transform: translate(0.05rem, 8%);
+    transform: translate(0.05rem, 4%);
   }
 }
 @keyframes rotateLeft {
@@ -105,16 +105,15 @@ header h1 {
   clip-path: inset(0 0 10% 0);
   display: flex;
   font-family: casinoSign3d;
-  font-size: clamp(30px, 4vw, 500px);
+  font-size: clamp(50px, 8vw, 100px);
   margin: 0;
-  transform: translateY(8%);
+  transform: translateY(4%);
   z-index: 1;
 }
 header h1:nth-child(2) {
   color: yellow;
   position: absolute;
   z-index: 0;
-  /* Comment out to stop animation in header */
   animation: moveLeftRight 0.5s infinite alternate;
 }
 
@@ -218,7 +217,6 @@ main {
   border-radius: 5px;
 }
 /* The next 3 rules animate a deck of card */
-/* add the class .animate to a deck */
 .animate :nth-child(1) {
   animation: rotateLeft 0.3s infinite alternate;
 }
