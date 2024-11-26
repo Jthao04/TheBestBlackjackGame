@@ -12,8 +12,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <script defer src="./assets/js/script.js"></script>
     <script defer src="./assets/js/cardobject.js"></script>
+    <script defer src="./assets/js/script.js"></script>
   </head>
 
   <body>
@@ -22,32 +22,36 @@
       <h1>BLACKJACK</h1>
     </header>
     <main>
-      <div class="score">
-        <h3>Scoreboard</h3>
-        <div>
-          <p>Dealer: <span id="dealer-sum"></span></p>
-          <p>Player: <span id="player-sum"></span></p>
-        </div>
-        <p id="results"></p>
-      </div>
       <section class="table">
-        <div id="dealer">
+        <div class="playArea" id="dealer">
           <h2>Dealer</h2>
+          <p class="score" id="dealerScore">0</p>
         </div>
-        <div id="player">
+        <div class="playArea" id="player">
           <h2>Player</h2>
+          <p class="score" id="playerScore">0</p>
+        </div>
+        <div class="deck">
+          <img src="./assets/images/card.png" alt="A deck of Cards" />
+          <img src="./assets/images/card.png" alt="A deck of Cards" />
+          <img src="./assets/images/card.png" alt="A deck of Cards" />
+          <img src="./assets/images/card.png" alt="A deck of Cards" />
         </div>
       </section>
-
-      <!-- <button class="start pure-button">
-        <p>PLAY</p>
-      </button>
-      <button class="pure-button">
-        <p>HIT</p>
-      </button>
-      <button class="pure-button">
-        <p>STAY</p>
-      </button> -->
+      <section id="playButtons">
+        <button class="pure-button">
+          <p>HIT</p>
+        </button>
+        <button class="pure-button">
+          <p>STAY</p>
+        </button>
+      </section>
     </main>
+    <footer>
+      <p>
+        Impressed? <a href="./contacts.html">Contact the developers</a> and let
+        them know!
+      </p>
+    </footer>
   </body>
 </html>
