@@ -30,7 +30,7 @@ class UI {
             function createSpan() {
                 const span = document.createElement("span");
                 span.style.position = "absolute";
-                span.style.fontSize = "clamp(16px, 2vw, 50px)";
+                span.style.fontSize = "clamp(1px, 2vw, 50px)";
                 span.style.fontWeight = "bolder";
                 span.style.fontFamily = "serif";
                 span.style.color = color;
