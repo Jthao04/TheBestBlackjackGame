@@ -159,9 +159,6 @@ class UI {
     }
 
 
-
-
-
     animate = function () {
         async function slideFromTo(element, orginElement, destinationElement) {
             while (this.active) {
@@ -195,8 +192,10 @@ class UI {
 
         // TODO: Create slide to dealer function
         // TODO: Create slide to player function
-        // TODO: Create shuffle deck function
-
+        // TODO: Create a function that activates the card deck shuffle
+        // TODO: Create card exit animations
+        // TODO: Create requestframe loop to update the display constantly with two hands as parameters
+        // TODO: Create an init function that will accept the objects of play
 
 
         return { slideFromTo }
@@ -204,11 +203,3 @@ class UI {
 }
 
 const ui = new UI;
-const card = ui.createCard(5, "club")
-const card1 = ui.createCard(5, "club")
-const playerArea = document.querySelector("#player");
-const deckDisplay = document.querySelector("body > main > section.table > div.deck")
-
-playerArea.append(card)
-ui.animate.slideFromTo(card, deckDisplay, playerArea)
-ui.animate.slideFromTo(card1, deckDisplay, playerArea)
