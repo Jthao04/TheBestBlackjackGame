@@ -227,13 +227,13 @@ main {
   box-shadow: var(--shadow);
 }
 /* The next 3 rules animate a deck of card */
-.animate :nth-child(1) {
+.deck[data-shuffle="true"] :nth-child(1) {
   animation: rotateLeft 0.3s infinite alternate;
 }
-.animate :nth-child(2) {
+.deck[data-shuffle="true"] :nth-child(2) {
   animation: rotateRight 0.4s infinite alternate;
 }
-.animate :last-child {
+.deck[data-shuffle="true"] :last-child {
   animation: slideDown 0.4s infinite alternate;
 }
 /* ///////////////////////////// */

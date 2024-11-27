@@ -8,6 +8,11 @@
 class UI {
     constructor() {
         this.active = false;
+
+        // INIT at game start
+        this.dealerBoardDisplay = document.querySelector("#dealer");
+        this.playerBoardDisplay = document.querySelector("#player");
+        this.deckGraphic = document.querySelector("#deck");
     }
 
     createCard(number, suit) {
@@ -189,12 +194,58 @@ class UI {
     }
 
     // TODO: Create slide to dealer function
+    slideToDealer(element) {
+        this.slideFromTo(element, this.deckGraphic, this.dealerBoardDisplay)
+    }
+
     // TODO: Create slide to player function
+    slideToPlayer(element) {
+        this.slideFromTo(element, this.deckGraphic, this.playerBoardDisplay)
+    }
+
     // TODO: Create a function that activates the card deck shuffle
+    async animateShuffle() {
+        this.deckGraphic.setAttribute("data-shuffle", "true")
+
+        await new Promise((resolve) => setTimeout(resolve, 1500))
+
+        this.deckGraphic.setAttribute("data-shuffle", "false")
+    }
+
     // TODO: Create card exit animations
+    async slideAway(element) {
+        while (this.active) {
+            await new Promise((resolve) => setTimeout(resolve, 10))
+        }
+
+        this.active = true;
+
+
+        const animation = element.animate(
+            [
+                { transform: `translateX(0)` },
+                { transform: "translateX(100vw)" }
+            ],
+            {
+                duration: 1000,
+                iterations: 1
+            }
+        )
+        await animation.finished
+        element.parentNode.removeChild(element)
+
+        this.active = false
+    }
+
+
     // TODO: Create requestframe loop to update the display constantly with two hands as parameters
     // TODO: Create an init function that will accept the objects of play
 
 }
 
 const ui = new UI;
+const theCard = ui.createCard(3, "spade")
+
+ui.slideToDealer(theCard);
+ui.slideAway(theCard)
+ui.animateShuffle()
