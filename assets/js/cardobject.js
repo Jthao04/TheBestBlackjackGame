@@ -167,10 +167,3 @@ function slideFrom(element, orginElement) {
         }
     )
 }
-
-
-const orgin = document.querySelector("#dealerScore");
-const element = document.querySelector("#playButtons > button:nth-child(1)");
-
-slideFrom(element, orgin)
-
