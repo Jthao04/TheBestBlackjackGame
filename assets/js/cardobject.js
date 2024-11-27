@@ -159,9 +159,7 @@ class UI {
     }
 
 
-    // TODO: Create slide to dealer function
-    // TODO: Create slide to player function
-    // TODO: Create shuffle deck function
+
 
 
     animate = function () {
@@ -194,6 +192,13 @@ class UI {
 
             this.active = false
         }
+
+        // TODO: Create slide to dealer function
+        // TODO: Create slide to player function
+        // TODO: Create shuffle deck function
+
+
+
         return { slideFromTo }
     }()
 }
