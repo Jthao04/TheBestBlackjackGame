@@ -158,35 +158,44 @@ class UI {
         return cardBody
     }
 
-    async slideFromTo(element, orginElement, destinationElement) {
-        while (this.active) {
-            await new Promise((resolve) => setTimeout(resolve, 10))
-        }
 
-        this.active = true;
+    // TODO: Create slide to dealer function
+    // TODO: Create slide to player function
+    // TODO: Create shuffle deck function
 
-        destinationElement.append(element)
 
-        const finalPosition = element.getBoundingClientRect();
-        const initialPosition = orginElement.getBoundingClientRect()
-
-        const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
-        const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
-
-        const animation = element.animate(
-            [
-                { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
-                { transform: "translate(0 , 0) rotate(360deg)" }
-            ],
-            {
-                duration: 500,
-                iterations: 1
+    animate = function () {
+        async function slideFromTo(element, orginElement, destinationElement) {
+            while (this.active) {
+                await new Promise((resolve) => setTimeout(resolve, 10))
             }
-        )
-        await animation.finished
 
-        this.active = false
-    }
+            this.active = true;
+
+            destinationElement.append(element)
+
+            const finalPosition = element.getBoundingClientRect();
+            const initialPosition = orginElement.getBoundingClientRect()
+
+            const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
+            const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
+
+            const animation = element.animate(
+                [
+                    { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
+                    { transform: "translate(0 , 0) rotate(360deg)" }
+                ],
+                {
+                    duration: 500,
+                    iterations: 1
+                }
+            )
+            await animation.finished
+
+            this.active = false
+        }
+        return { slideFromTo }
+    }()
 }
 
 const ui = new UI;
@@ -196,5 +205,5 @@ const playerArea = document.querySelector("#player");
 const deckDisplay = document.querySelector("body > main > section.table > div.deck")
 
 playerArea.append(card)
-ui.slideFromTo(card, deckDisplay, playerArea)
-ui.slideFromTo(card1, deckDisplay, playerArea)
+ui.animate.slideFromTo(card, deckDisplay, playerArea)
+ui.animate.slideFromTo(card1, deckDisplay, playerArea)
