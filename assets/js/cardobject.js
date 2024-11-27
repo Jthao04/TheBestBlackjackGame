@@ -148,36 +148,22 @@ function createCard(number, suit) {
 
 
 
-const playerArea = document.querySelector("#player");
-const dealerArea = document.querySelector("#dealer");
 
-
-const card = createCard(1, "club")
-const card1 = createCard(10, "heart")
-const theDeck = document.querySelector("body > main > section.table > div.deck");
-
-playerArea.append(card)
-dealerArea.append(card1)
-
-
-const slide = (function slideFrom(element, orginElement) {
+function slideFrom(element, orginElement) {
     const finalPosition = element.getBoundingClientRect();
     const initialPosition = orginElement.getBoundingClientRect()
 
-    const xTranslate = finalPosition.x - initialPosition.x
-    const yTranslate = finalPosition.y - initialPosition.y
+    const xAxisdistance = finalPosition.x - initialPosition.x
+    const yAxisDistance = finalPosition.y - initialPosition.y
 
-    console.log(xTranslate, yTranslate, initialPosition.x)
-
-
-
-    const distance = Math.sqrt(Math.pow(finalPosition.x - initialPosition.x, 2) + Math.pow(finalPosition.y - initialPosition.y, 2))
-
-    console.log(distance)
-    // This hides the Card
-    element.style.zIndex = "-1"
-
-    // element.style.transform = `translate(${xTranslate},${yTranslate})`
-    element.style.transform = `translate(-${xTranslate}px,-${yTranslate}px)`
-
-})(card, theDeck)
+    element.animate(
+        [
+            { transform: `translate(-${xAxisdistance}px, -${yAxisDistance}px)` },
+            { transform: "translate(0 , 0) rotate(360deg)" }
+        ],
+        {
+            duration: 500,
+            iterations: 1
+        }
+    )
+}
