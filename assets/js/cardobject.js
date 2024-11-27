@@ -6,7 +6,9 @@
 
 
 class UI {
-    constructor() { }
+    constructor() {
+        this.active = false;
+    }
 
     createCard(number, suit) {
         // add one to 0 indexed input number
@@ -156,14 +158,22 @@ class UI {
         return cardBody
     }
 
-    slideFrom(element, orginElement) {
+    async slideFromTo(element, orginElement, destinationElement) {
+        while (this.active) {
+            await new Promise((resolve) => setTimeout(resolve, 10))
+        }
+
+        this.active = true;
+
+        destinationElement.append(element)
+
         const finalPosition = element.getBoundingClientRect();
         const initialPosition = orginElement.getBoundingClientRect()
 
         const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
         const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
 
-        element.animate(
+        const animation = element.animate(
             [
                 { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
                 { transform: "translate(0 , 0) rotate(360deg)" }
@@ -173,5 +183,18 @@ class UI {
                 iterations: 1
             }
         )
+        await animation.finished
+
+        this.active = false
     }
 }
+
+const ui = new UI;
+const card = ui.createCard(5, "club")
+const card1 = ui.createCard(5, "club")
+const playerArea = document.querySelector("#player");
+const deckDisplay = document.querySelector("body > main > section.table > div.deck")
+
+playerArea.append(card)
+ui.slideFromTo(card, deckDisplay, playerArea)
+ui.slideFromTo(card1, deckDisplay, playerArea)
