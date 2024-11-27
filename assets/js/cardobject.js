@@ -153,12 +153,12 @@ function slideFrom(element, orginElement) {
     const finalPosition = element.getBoundingClientRect();
     const initialPosition = orginElement.getBoundingClientRect()
 
-    const xAxisdistance = finalPosition.x - initialPosition.x
-    const yAxisDistance = finalPosition.y - initialPosition.y
+    const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
+    const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
 
     element.animate(
         [
-            { transform: `translate(-${xAxisdistance}px, -${yAxisDistance}px)` },
+            { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
             { transform: "translate(0 , 0) rotate(360deg)" }
         ],
         {
@@ -167,3 +167,10 @@ function slideFrom(element, orginElement) {
         }
     )
 }
+
+
+const orgin = document.querySelector("#dealerScore");
+const element = document.querySelector("#playButtons > button:nth-child(1)");
+
+slideFrom(element, orgin)
+
