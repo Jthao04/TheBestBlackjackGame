@@ -158,48 +158,43 @@ class UI {
         return cardBody
     }
 
-
-    animate = function () {
-        async function slideFromTo(element, orginElement, destinationElement) {
-            while (this.active) {
-                await new Promise((resolve) => setTimeout(resolve, 10))
-            }
-
-            this.active = true;
-
-            destinationElement.append(element)
-
-            const finalPosition = element.getBoundingClientRect();
-            const initialPosition = orginElement.getBoundingClientRect()
-
-            const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
-            const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
-
-            const animation = element.animate(
-                [
-                    { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
-                    { transform: "translate(0 , 0) rotate(360deg)" }
-                ],
-                {
-                    duration: 500,
-                    iterations: 1
-                }
-            )
-            await animation.finished
-
-            this.active = false
+    async slideFromTo(element, orginElement, destinationElement) {
+        while (this.active) {
+            await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
-        // TODO: Create slide to dealer function
-        // TODO: Create slide to player function
-        // TODO: Create a function that activates the card deck shuffle
-        // TODO: Create card exit animations
-        // TODO: Create requestframe loop to update the display constantly with two hands as parameters
-        // TODO: Create an init function that will accept the objects of play
+        this.active = true;
 
+        destinationElement.append(element)
 
-        return { slideFromTo }
-    }()
+        const finalPosition = element.getBoundingClientRect();
+        const initialPosition = orginElement.getBoundingClientRect()
+
+        const xAxisdistance = (finalPosition.x - initialPosition.x) * -1
+        const yAxisDistance = (finalPosition.y - initialPosition.y) * -1
+
+        const animation = element.animate(
+            [
+                { transform: `translate(${xAxisdistance}px, ${yAxisDistance}px)` },
+                { transform: "translate(0 , 0) rotate(360deg)" }
+            ],
+            {
+                duration: 500,
+                iterations: 1
+            }
+        )
+        await animation.finished
+
+        this.active = false
+    }
+
+    // TODO: Create slide to dealer function
+    // TODO: Create slide to player function
+    // TODO: Create a function that activates the card deck shuffle
+    // TODO: Create card exit animations
+    // TODO: Create requestframe loop to update the display constantly with two hands as parameters
+    // TODO: Create an init function that will accept the objects of play
+
 }
 
 const ui = new UI;
