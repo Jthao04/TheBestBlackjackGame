@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 class UI {
     constructor() {
         this.active = false;
@@ -256,19 +249,3 @@ class UI {
     // TODO: Create an init function that will accept the objects of play
 
 }
-
-
-
-const ui = new UI;
-const theCard = ui.createCard(3, "spade");
-
-// function update(timestamp) {
-//     console.log(timestamp)
-//     requestAnimationFrame(update)
-// }
-
-// function start() {
-//     requestAnimationFrame(update)
-// }
-ui.start()
-
