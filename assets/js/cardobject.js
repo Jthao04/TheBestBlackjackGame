@@ -265,14 +265,16 @@ class UI {
             await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
-        const display = handDisplay;
-
-        console.log(hand)
+        // TODO: This was a mock existing display array that contains array objects. ill need to get that info
+        // display.children[]
         const existingDisplay = [{ value: 5, suit: 'heart' }, { value: 5, suit: 'heart' }]
 
+
+
+        // This will update the graphics with anything that is in the hand and not rendered
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard =>
-                card.value == existingCard.value
+                card.value === existingCard.value && card.suit === existingCard.suit
             );
             return !exists
         }
@@ -285,11 +287,6 @@ class UI {
 
 
         // This gets the text content of the span of the card to determine the card index
-        console.log(hand)
-        console.log(graphicsUpdate)//This will return the amount of card in the display currently
-        // TODO: Make a function that accepts the card number and suit
-
-
 
         //     // check the display to see what is rendered.
         //     // Check the hand to see what it holds
