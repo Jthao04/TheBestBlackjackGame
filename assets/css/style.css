@@ -154,9 +154,6 @@ main {
   height: calc(100% - 20px);
 
   /* position the cards */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-left: 70px;
   padding-top: 3vw;
 }
@@ -166,6 +163,13 @@ main {
   }
 }
 
+/* Card Area */
+#dealer,
+#player {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
 /* Play Area Header */
 .playArea > h2 {
   background-color: var(--tableGreen);
@@ -187,7 +191,6 @@ main {
 .playingCard {
   box-shadow: var(--shadow);
   margin-left: -30px;
-  margin-top: -20px;
 }
 
 /* ///////////////////////////// */

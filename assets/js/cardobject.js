@@ -1,21 +1,23 @@
+// Deck booleen
+// Boards are arrays
+// { value: 0-12, suit: 0-3 }
+const newCard = { value: 5, suit: "heart" }
+
+const playerBoard = [];
+const dealerBoard = []
+
+for (let i = 0; i < 5; i++) {
+    const pushCard = newCard;
+    playerBoard.push(pushCard)
+    const pushCard1 = newCard;
+    playerBoard.push(pushCard1)
+}
+
 class UI {
     constructor() {
         this.active = false;
         // Bind the update function to the initial instance
         this.update = this.update.bind(this);
-        // INIT at game start
-        this.dealerBoardDisplay = document.querySelector("#dealer");
-        this.playerBoardDisplay = document.querySelector("#player");
-        this.deckGraphic = document.querySelector("#deck");
-    }
-
-    update(timestamp) {
-        console.log(timestamp)
-        requestAnimationFrame(this.update)
-    }
-
-    start() {
-        requestAnimationFrame(this.update)
     }
 
     createCard(number, suit) {
@@ -196,17 +198,14 @@ class UI {
         this.active = false
     }
 
-    // TODO: Create slide to dealer function
     slideToDealer(element) {
         this.slideFromTo(element, this.deckGraphic, this.dealerBoardDisplay)
     }
 
-    // TODO: Create slide to player function
     slideToPlayer(element) {
         this.slideFromTo(element, this.deckGraphic, this.playerBoardDisplay)
     }
 
-    // TODO: Create a function that activates the card deck shuffle
     async animateShuffle() {
         this.deckGraphic.setAttribute("data-shuffle", "true")
 
@@ -215,7 +214,6 @@ class UI {
         this.deckGraphic.setAttribute("data-shuffle", "false")
     }
 
-    // TODO: Create card exit animations
     async slideAway(element) {
         // Commented out to allow multiple cards to slide at a time
         // while (this.active) {
@@ -242,10 +240,58 @@ class UI {
         this.active = false
     }
 
+    updateTable(hand, handDisplay) {
+        const display = handDisplay;
+        console.log(handDisplay.children)
 
-    // TODO: Create requestframe loop to update the display constantly with two hands as parameters
 
+        // hand.forEach(card => {
+        //     console.log(card.value, card.suit)
+
+        //     // check the display to see what is rendered.
+        //     // Check the hand to see what it holds
+        //     // if the card exists in the hand and not the display render the card
+        //     // if the card exists in the hand and the display do nothing
+        // })
+    }
+
+    update(timestamp) {
+        // TODO:updatePlayerTable()
+        // TODO: updateDealerTable()
+        // TODO: Is deck empty?
+
+        console.log(timestamp)
+        requestAnimationFrame(this.update)
+    }
+
+    start() {
+        requestAnimationFrame(this.update)
+    }
 
     // TODO: Create an init function that will accept the objects of play
+    setup(playerTableDisplay, dealerTableDisplay, deckGraphic) {
+        this.dealerBoardDisplay = dealerTableDisplay;
+        this.playerBoardDisplay = playerTableDisplay;
+        this.deckGraphic = deckGraphic;
+    }
 
+    init(playerHand, dealerHand, deckEmpty) {
+        this.dealerHand = dealerHand;
+        this.playerHand = playerHand;
+        this.deckEmpty = deckEmpty
+    }
 }
+
+
+const dealerDisplay = document.querySelector("#dealer");
+const playerDisplay = document.querySelector("#player");
+const deckDisplay = document.querySelector("#deck");
+
+const ui = new UI;
+
+ui.setup(playerDisplay, dealerDisplay, deckDisplay);
+ui.init(playerBoard, dealerBoard, false);
+ui.updateTable(playerBoard, playerDisplay)
+
+for (let i = 0; i < 10; i++)
+    ui.slideToPlayer(ui.createCard(i, "diamond"))
