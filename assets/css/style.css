@@ -169,6 +169,8 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
+  justify-content: center;
+  padding: 1.5em;
 }
 /* Play Area Header */
 .playArea > h2 {
