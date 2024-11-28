@@ -172,11 +172,13 @@ const newCard = { value: 5, suit: "heart" }
 const playerBoard = [];
 const dealerBoard = []
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 6; i++) {
+    const newCard = { value: i, suit: "heart" }
+
     const pushCard = newCard;
     playerBoard.push(pushCard)
     const pushCard1 = newCard;
-    playerBoard.push(pushCard1)
+    dealerBoard.push(pushCard1)
 }
 
 class UI {
@@ -265,11 +267,26 @@ class UI {
 
         const display = handDisplay;
 
-        const existingDisplay = []
+        console.log(hand)
+        const existingDisplay = [{ value: 5, suit: 'heart' }, { value: 5, suit: 'heart' }]
+
+        const graphicsUpdate = hand.filter(card => {
+            const exists = existingDisplay.some(existingCard =>
+                card.value == existingCard.value
+            );
+            return !exists
+        }
+        );
+
+
+
+
+
+
 
         // This gets the text content of the span of the card to determine the card index
-        console.log(handDisplay.children[0].dataset.number)
-        console.log(handDisplay.children.length)//This will return the amount of card in the display currently
+        console.log(hand)
+        console.log(graphicsUpdate)//This will return the amount of card in the display currently
         // TODO: Make a function that accepts the card number and suit
 
 
@@ -318,7 +335,7 @@ ui.setup(playerDisplay, dealerDisplay, deckDisplay);
 ui.init(playerBoard, dealerBoard, false);
 
 
-for (let i = 0; i <= 12; i++) {
+for (let i = 0; i <= 2; i++) {
     console.log(i)
     ui.slideToPlayer(createCard(i, "diamond"))
 }
