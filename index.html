@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script defer src="./assets/js/script.js"></script>
+    <script defer src="./assets/js/cardobject.js"></script>
   </head>
 
   <body>
@@ -21,6 +22,14 @@
       <h1>BLACKJACK</h1>
     </header>
     <main>
+      <div class="score">
+        <h3>Scoreboard</h3>
+        <div>
+          <p>Dealer: <span id="dealer-sum"></span></p>
+          <p>Player: <span id="player-sum"></span></p>
+        </div>
+        <p id="results"></p>
+      </div>
       <section class="table">
         <div id="dealer">
           <h2>Dealer</h2>
@@ -30,10 +39,7 @@
         </div>
       </section>
 
-      <div class="score">
-        <p>Scoreboard</p>
-      </div>
-      <button class="start pure-button">
+      <!-- <button class="start pure-button">
         <p>PLAY</p>
       </button>
       <button class="pure-button">
@@ -41,8 +47,7 @@
       </button>
       <button class="pure-button">
         <p>STAY</p>
-      </button>
-      <footer>ABOUT</footer>
+      </button> -->
     </main>
   </body>
 </html>
