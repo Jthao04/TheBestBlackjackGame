@@ -150,11 +150,11 @@ main {
   border-radius: 10px;
   justify-self: center;
   position: relative;
-  width: clamp(300px, 50%, 50%);
+  width: clamp(230px, 50vw, 50vw);
   height: calc(100% - 20px);
 
   /* position the cards */
-  padding-left: 70px;
+
   padding-top: 3vw;
 }
 @media screen and (max-width: 600px) {
