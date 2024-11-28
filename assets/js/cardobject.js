@@ -109,36 +109,51 @@ function createCard(number, suit) {
     // Define the original length for use in the calculations
     let originalLength = allSymbols.length;;
 
-    if (allSymbols.length < 4) {
+
+    // Append the appropriate symbols into columns
+
+
+    if (originalLength < 4) {     // If there is 1 - 3 symbols they are all appended to the center column 
         allSymbols.forEach(Element => {
             centerColumn.append(Element)
         });
-    } else if (allSymbols.length >= 4 && allSymbols.length <= 10) {
+    } else if (allSymbols.length >= 4 && originalLength < 10) { //If there is 4 - 10 symbols put the symbols in 
         // IF there are an odd numnber of symbols add one to the center column
         if (originalLength % 2 === 1) {
             centerColumn.append(allSymbols.pop());
         }
-        originalLength = allSymbols.length;
+        const leftOver = allSymbols.length;
 
         // Add a symbol to each outside column alernating to maintain the balance of the colums
-        for (let i = 0; i < originalLength / 2; i++) {
+        for (let i = 0; i < leftOver / 2; i++) {
             leftColumn.append(allSymbols.pop())
             rightColumn.append(allSymbols.pop())
         }
-    } else if (allSymbols.length === 11) {
+    } else if (originalLength === 10) {
+        centerColumn.append(allSymbols.pop());
+        centerColumn.append(allSymbols.pop());
+
+        const leftOver = allSymbols.length;
+
+        // Add a symbol to each outside column alernating to maintain the balance of the colums
+        for (let i = 0; i < leftOver / 2; i++) {
+            leftColumn.append(allSymbols.pop())
+            rightColumn.append(allSymbols.pop())
+        }
+    } else if (originalLength === 11) {
         cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         centerColumn.append(allSymbols.pop(), allSymbols.pop())
 
-    } else if (allSymbols.length === 12) {
+    } else if (originalLength === 12) {
         // IF it is a queen, apply the queen background image and paste in a symbol
         cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/queenRed.svg")') || 'url("./assets/cardAssets/svg/queenBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain"
         centerColumn.append(allSymbols.pop())
-    } else if (allSymbols.length === 13) {
+    } else if (originalLength === 13) {
         // IF it is a king, apply the king background image and paste in a symbol
         cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
@@ -254,7 +269,11 @@ class UI {
 
         // This gets the text content of the span of the card to determine the card index
         console.log(handDisplay.children[0].dataset.number)
-        console.log(handDisplay.children.length)
+        console.log(handDisplay.children.length)//This will return the amount of card in the display currently
+        // TODO: Make a function that accepts the card number and suit
+
+
+
         //     // check the display to see what is rendered.
         //     // Check the hand to see what it holds
         //     // if the card exists in the hand and not the display render the card
