@@ -28,7 +28,7 @@ class UI {
         cardBody.className = "playingCard"
         cardBody.style.backgroundColor = "hsl(48, 39%, 83%)";
         cardBody.style.display = "flex";
-        cardBody.style.width = "12vh";
+        cardBody.style.width = "clamp(15px, 12vh, 12vh)";
         cardBody.style.height = "80%";
         cardBody.style.borderRadius = "10px";
         cardBody.style.position = "relative";
