@@ -8,11 +8,21 @@
 class UI {
     constructor() {
         this.active = false;
-
+        // Bind the update function to the initial instance
+        this.update = this.update.bind(this);
         // INIT at game start
         this.dealerBoardDisplay = document.querySelector("#dealer");
         this.playerBoardDisplay = document.querySelector("#player");
         this.deckGraphic = document.querySelector("#deck");
+    }
+
+    update(timestamp) {
+        console.log(timestamp)
+        requestAnimationFrame(this.update)
+    }
+
+    start() {
+        requestAnimationFrame(this.update)
     }
 
     createCard(number, suit) {
@@ -214,9 +224,10 @@ class UI {
 
     // TODO: Create card exit animations
     async slideAway(element) {
-        while (this.active) {
-            await new Promise((resolve) => setTimeout(resolve, 10))
-        }
+        // Commented out to allow multiple cards to slide at a time
+        // while (this.active) {
+        //     await new Promise((resolve) => setTimeout(resolve, 10))
+        // }
 
         this.active = true;
 
@@ -232,6 +243,7 @@ class UI {
             }
         )
         await animation.finished
+
         element.parentNode.removeChild(element)
 
         this.active = false
@@ -239,13 +251,24 @@ class UI {
 
 
     // TODO: Create requestframe loop to update the display constantly with two hands as parameters
+
+
     // TODO: Create an init function that will accept the objects of play
 
 }
 
-const ui = new UI;
-const theCard = ui.createCard(3, "spade")
 
-ui.slideToDealer(theCard);
-ui.slideAway(theCard)
-ui.animateShuffle()
+
+const ui = new UI;
+const theCard = ui.createCard(3, "spade");
+
+// function update(timestamp) {
+//     console.log(timestamp)
+//     requestAnimationFrame(update)
+// }
+
+// function start() {
+//     requestAnimationFrame(update)
+// }
+ui.start()
+
