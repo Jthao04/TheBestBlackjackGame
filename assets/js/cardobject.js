@@ -13,8 +13,8 @@ function createCard(number, suit) {
     cardBody.style.padding = "15px";
     cardBody.style.alignItems = "center"
 
-    cardBody.dataset.number = inputNumber
-
+    cardBody.dataset.number = inputNumber;
+    cardBody.dataset.suit = suit;
 
     // Creates two spans that are positioned absolutely
     function appendSpans() {
@@ -167,13 +167,12 @@ function createCard(number, suit) {
 // Deck booleen
 // Boards are arrays
 // { value: 0-12, suit: 0-3 }
-const newCard = { value: 5, suit: "heart" }
 
 const playerBoard = [];
 const dealerBoard = []
 
 for (let i = 0; i < 6; i++) {
-    const newCard = { value: i, suit: "heart" }
+    const newCard = { value: i, suit: "diamond" }
 
     const pushCard = newCard;
     playerBoard.push(pushCard)
@@ -266,19 +265,32 @@ class UI {
         }
 
         // TODO: This was a mock existing display array that contains array objects. ill need to get that info
-        // display.children[]
-        const existingDisplay = [{ value: 5, suit: 'heart' }, { value: 5, suit: 'heart' }]
+        const displayedCard = Array.from(handDisplay.children)
+        //
 
+        const existingDisplay = []
+
+        displayedCard.forEach(card => {
+            const cardObject = {
+                number: parseInt(card.dataset.number),
+                suit: card.dataset.suit
+            }
+            existingDisplay.push(cardObject)
+        })
 
 
         // This will update the graphics with anything that is in the hand and not rendered
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard =>
-                card.value === existingCard.value && card.suit === existingCard.suit
+                // Card object was created with the value
+                card.value === existingCard.number && card.suit === existingCard.suit
             );
             return !exists
-        }
-        );
+        });
+
+        console.log(hand)
+        console.log(existingDisplay)
+        console.log(graphicsUpdate)
 
 
 
