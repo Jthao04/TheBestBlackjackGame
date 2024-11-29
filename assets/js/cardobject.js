@@ -12,16 +12,22 @@ function createCard(number, suit) {
     cardBody.style.position = "relative";
     cardBody.style.padding = "15px";
     cardBody.style.alignItems = "center"
+    cardBody.style.overflow = "hidden"
 
     cardBody.dataset.number = number;
     cardBody.dataset.suit = suit;
+
+    const symbolSource = (suit === "heart" && "./assets/cardAssets/symbols/hearts.png") ||
+        (suit === "club" && "./assets/cardAssets/symbols/clubs.png") ||
+        (suit === "diamond" && "./assets/cardAssets/symbols/diamonds.png") ||
+        (suit === "spade" && "./assets/cardAssets/symbols/spades.png");
 
     // Creates two spans that are positioned absolutely
     function appendSpans() {
         function createSpan() {
             const span = document.createElement("span");
             span.style.position = "absolute";
-            span.style.fontSize = "clamp(1px, 2vw, 50px)";
+            span.style.fontSize = "clamp(1px, 2vw, 20px)";
             span.style.fontWeight = "bolder";
             span.style.fontFamily = "serif";
             span.style.color = color;
@@ -47,16 +53,79 @@ function createCard(number, suit) {
             span1.textContent = "A";
         }
         if (inputNumber === 11) {
+            const symbol0 = document.createElement("img")
+            symbol0.src = symbolSource
+            symbol0.style.position = "absolute"
+            symbol0.style.width = "100%";
+            symbol0.style.bottom = "-50%"
+            symbol0.style.left = "50%"
+            symbol0.style.transform = "translateX(-50%)"
+
+            const symbol1 = document.createElement("img")
+            symbol1.src = symbolSource
+            symbol1.style.position = "absolute"
+            symbol1.style.width = "100%";
+            symbol1.style.bottom = "-50%"
+            symbol1.style.left = "50%"
+            symbol1.style.transform = "translateX(-50%)"
+
             span0.textContent = "J";
             span1.textContent = "J";
+            span0.style.width = '20%'
+            span1.style.width = '20%'
+
+            span0.appendChild(symbol0)
+            span1.appendChild(symbol1)
         }
         if (inputNumber === 12) {
+            const symbol0 = document.createElement("img")
+            symbol0.src = symbolSource
+            symbol0.style.position = "absolute"
+            symbol0.style.width = "100%";
+            symbol0.style.bottom = "-50%"
+            symbol0.style.left = "50%"
+            symbol0.style.transform = "translateX(-50%)"
+
+            const symbol1 = document.createElement("img")
+            symbol1.src = symbolSource
+            symbol1.style.position = "absolute"
+            symbol1.style.width = "100%";
+            symbol1.style.bottom = "-50%"
+            symbol1.style.left = "50%"
+            symbol1.style.transform = "translateX(-50%)"
+
             span0.textContent = "Q";
             span1.textContent = "Q";
+            span0.style.width = '20%'
+            span1.style.width = '20%'
+
+            span0.appendChild(symbol0)
+            span1.appendChild(symbol1)
         }
         if (inputNumber === 13) {
+            const symbol0 = document.createElement("img")
+            symbol0.src = symbolSource
+            symbol0.style.position = "absolute"
+            symbol0.style.width = "100%";
+            symbol0.style.bottom = "-50%"
+            symbol0.style.left = "50%"
+            symbol0.style.transform = "translateX(-50%)"
+
+            const symbol1 = document.createElement("img")
+            symbol1.src = symbolSource
+            symbol1.style.position = "absolute"
+            symbol1.style.width = "100%";
+            symbol1.style.bottom = "-50%"
+            symbol1.style.left = "50%"
+            symbol1.style.transform = "translateX(-50%)"
+
             span0.textContent = "K";
             span1.textContent = "K";
+            span0.style.width = '20%'
+            span1.style.width = '20%'
+
+            span0.appendChild(symbol0)
+            span1.appendChild(symbol1)
         }
 
         cardBody.append(span0, span1);
@@ -87,10 +156,7 @@ function createCard(number, suit) {
 
     if (typeof inputNumber === "number") {
         // Determine which symbol to load depending on the suit
-        const symbolSource = (suit === "heart" && "./assets/cardAssets/symbols/hearts.png") ||
-            (suit === "club" && "./assets/cardAssets/symbols/clubs.png") ||
-            (suit === "diamond" && "./assets/cardAssets/symbols/diamonds.png") ||
-            (suit === "spade" && "./assets/cardAssets/symbols/spades.png");
+
 
         // Create as many symbols as the input number and add them to the allSymbols array 
         for (let i = 0; i < inputNumber; i++) {
@@ -382,10 +448,10 @@ const theDeck = []
 ui.init(playerHand, dealerHand, theDeck);
 ui.start()
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 13; i++) {
     const cardObject = {
         value: i,
-        suit: 0
+        suit: 1
     }
     playerHand.push(cardObject)
 }
