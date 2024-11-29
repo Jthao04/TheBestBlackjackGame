@@ -300,7 +300,7 @@ class UI {
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
+                if (cardObject.number === parseInt(element.dataset.number) && suit === element.dataset.suit) {
                     this.slideAway(element)
                 }
             })
@@ -318,7 +318,13 @@ class UI {
 
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
-            const cardElement = createCard(cardObject.value, cardObject.suit)
+            console.log(cardObject)
+            const suit = (cardObject.suit === 0 && "heart") ||
+                (cardObject.suit === 1 && "spade") ||
+                (cardObject.suit === 2 && "diamond") ||
+                (cardObject.suit === 3 && "club")
+            console.log(cardObject.value, suit)
+            const cardElement = createCard(cardObject.value, suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
             this.cardsDealt++
@@ -352,3 +358,18 @@ class UI {
 
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
+
+const playerHand = []
+const dealerHand = []
+const theDeck = []
+for (let i = 0; i < 11; i++) {
+    const cardObject = {
+        value: i & 13,
+        suit: i % 4
+    }
+    playerHand.push(cardObject)
+}
+console.log(theDeck)
+ui.init(playerHand, dealerHand, theDeck);
+
+ui.updateTable(playerHand, document.querySelector("#player"))
