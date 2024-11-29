@@ -168,17 +168,6 @@ function createCard(number, suit) {
 // Boards are arrays
 // { value: 0-12, suit: 0-3 }
 
-const playerBoard = [];
-const dealerBoard = []
-
-for (let i = 0; i < 6; i++) {
-    const newCard = { value: i, suit: "diamond" }
-
-    const pushCard = newCard;
-    playerBoard.push(pushCard)
-    const pushCard1 = newCard;
-    dealerBoard.push(pushCard1)
-}
 
 class UI {
     constructor() {
@@ -347,19 +336,4 @@ class UI {
     }
 }
 
-
-const dealerDisplay = document.querySelector("#dealer");
-const playerDisplay = document.querySelector("#player");
-const deckDisplay = document.querySelector("#deck");
-
 const ui = new UI;
-
-ui.setup(playerDisplay, dealerDisplay, deckDisplay);
-ui.init(playerBoard, dealerBoard, false);
-
-
-for (let i = 0; i <= 2; i++) {
-    ui.slideToPlayer(createCard(i, "diamond"))
-}
-
-ui.updateTable(playerBoard, playerDisplay)
