@@ -259,6 +259,7 @@ class UI {
         this.active = false
     }
 
+    // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added
     async updateTable(hand, handDisplay) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
@@ -280,6 +281,27 @@ class UI {
             existingDisplay.push(cardObject)
         })
 
+        // Find the extra cards by checking if the cards from the display exist in the hand
+        // If they dont exist in the hand they are added to the extraCards array
+        const extraCards = existingDisplay.filter(cardObject => {
+            const exists = hand.some(existingCard => {
+                cardObject.value === existingCard.number && cardObject.suit === existingCard.suit
+            })
+            return !exists
+        })
+
+
+        const displayed = Array.from(handDisplay.children)
+
+        displayed.forEach(element => {
+            extraCards.forEach(cardObject => {
+                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
+                    this.slideAway(element)
+                }
+            })
+        })
+
+
         // This will create an array that contains cardObjects with the existing display information
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard =>
@@ -289,36 +311,13 @@ class UI {
             return !exists
         });
 
-        // TODO: Remove any cards that are not in the hand from the display
-
-        const extraCards = existingDisplay.filter(cardObject => {
-            const exists = hand.some(existingCard => {
-                cardObject.value === existingCard.number && cardObject.suit === existingCard.suit
-            })
-            return !exists
-        })
-
-        console.log(extraCards)
-
-        const displayed = Array.from(handDisplay.children)
-        console.log(displayed)
-
-        displayed.forEach(element => {
-            extraCards.forEach(cardObject => {
-                console.log(cardObject.number, element.dataset.number)
-                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
-                    this.slideAway(element)
-                }
-            })
-        })
-
-
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
             const cardElement = createCard(cardObject.value, cardObject.suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
         });
+
     }
 
     update(timestamp) {
