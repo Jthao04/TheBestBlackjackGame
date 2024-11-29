@@ -289,7 +289,6 @@ class UI {
         // Find the extra cards by checking if the cards from the display exist in the hand
 
         // If they dont exist in the hand they are added to the extraCards array
-        // console.log(existingDisplay)
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
 
@@ -297,24 +296,18 @@ class UI {
                     cardObject.suit === "spade" ? 1 :
                         cardObject.suit === "diamond" ? 2 :
                             cardObject.suit === "club" ? 3 :
+                                null
 
-                                console.log(cardObject, suit, existingCard)
-                // console.log(existingCard, cardObject, cardObject.number === existingCard.value && suit === existingCard.suit)
                 return cardObject.number === existingCard.value && suit === existingCard.suit
             })
             return !exists
         })
-        // console.log(extraCards)
 
         const displayed = Array.from(handDisplay.children)
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-                console.log(element.dataset.suit, cardObject.suit)
-                console.log(cardObject.number, parseInt(element.dataset.number))
-
                 if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
-
                     this.slideAway(element)
                 }
             })
