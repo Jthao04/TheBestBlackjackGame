@@ -293,11 +293,21 @@ class UI {
 
     async animateShuffle() {
         this.active = true
+
+        this.deckGraphic.style.visibility = "hidden"
+
+        await new Promise((resolve) => setTimeout(resolve, 1500))
+
+        this.deckGraphic.style.visibility = "visible"
+
+
+
         this.deckGraphic.setAttribute("data-shuffle", "true")
 
         await new Promise((resolve) => setTimeout(resolve, 1500))
 
         this.deckGraphic.setAttribute("data-shuffle", "false")
+
         this.active = false
     }
 
@@ -413,7 +423,7 @@ class UI {
     async update(timestamp) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 100));
         }
 
         // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
@@ -445,10 +455,10 @@ const theDeck = []
 ui.init(playerHand, dealerHand, theDeck);
 ui.start()
 
-for (let i = 0; i < 13; i++) {
+for (let i = 0; i < 52; i++) {
     const cardObject = {
-        value: i,
-        suit: 1
+        value: i % 13,
+        suit: i % 4
     }
     playerHand.push(cardObject)
 }
