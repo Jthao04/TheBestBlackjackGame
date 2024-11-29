@@ -343,7 +343,7 @@ class UI {
     }
 
     // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added
-    async updateTable(hand, handDisplay) {
+    updateTable(hand, handDisplay) {
         // // If something is still animating wait and check again in 10ms
         // while (this.active) {
         //     await new Promise((resolve) => setTimeout(resolve, 10))
@@ -423,6 +423,10 @@ class UI {
             this.cardsDealt++
         });
 
+    }
+
+    updateScore() {
+        // TODO: Get the sums from each hand and append it to the dom in the appropriate plave
     }
 
     async update(timestamp) {
