@@ -309,9 +309,16 @@ class UI {
 
     }
 
-    update(timestamp) {
+    async update(timestamp) {
+        // If something is still animating wait and check again in 10ms
+        while (this.active) {
+            await new Promise((resolve) => setTimeout(resolve, 10))
+        }
+
         // TODO:updatePlayerTable()
+        this.updateTable(this.playerHand, this.playerBoardDisplay)
         // TODO: updateDealerTable()
+        this.updateTable(this.dealerHand, this.dealerBoardDisplay)
         // TODO: Is deck empty?
 
         console.log(timestamp)
@@ -322,13 +329,13 @@ class UI {
         requestAnimationFrame(this.update)
     }
 
-    // TODO: Create an init function that will accept the objects of play
+    // This is a setup function that finds the addresses for the area to display each animation
     setup(playerTableDisplay, dealerTableDisplay, deckGraphic) {
         this.dealerBoardDisplay = dealerTableDisplay;
         this.playerBoardDisplay = playerTableDisplay;
         this.deckGraphic = deckGraphic;
     }
-
+    // This is an init function that finds the addresses for the game objects from the games logic
     init(playerHand, dealerHand, deckEmpty) {
         this.dealerHand = dealerHand;
         this.playerHand = playerHand;
