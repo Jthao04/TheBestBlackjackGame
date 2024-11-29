@@ -271,7 +271,7 @@ class UI {
         const existingDisplay = []
 
         // Creates an object that has the number and suit
-        // Pushes an object for each card in the display to the existing display
+        // Pushes that object for each card in the display to the existing display array
         displayedCard.forEach(card => {
             const cardObject = {
                 number: parseInt(card.dataset.number),
@@ -280,7 +280,7 @@ class UI {
             existingDisplay.push(cardObject)
         })
 
-        // This will update the graphics with anything that is in the hand and not rendered
+        // This will create an array that contains cardObjects with the existing display information
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard =>
                 // Card object was created with the value
@@ -289,8 +289,32 @@ class UI {
             return !exists
         });
 
+        // TODO: Remove any cards that are not in the hand from the display
+
+        const extraCards = existingDisplay.filter(cardObject => {
+            const exists = hand.some(existingCard => {
+                cardObject.value === existingCard.number && cardObject.suit === existingCard.suit
+            })
+            return !exists
+        })
+
+        console.log(extraCards)
+
+        const displayed = Array.from(handDisplay.children)
+        console.log(displayed)
+
+        displayed.forEach(element => {
+            extraCards.forEach(cardObject => {
+                console.log(cardObject.number, element.dataset.number)
+                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
+                    this.slideAway(element)
+                }
+            })
+        })
+
+
+        // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
-            console.log(cardObject)
             const cardElement = createCard(cardObject.value, cardObject.suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
