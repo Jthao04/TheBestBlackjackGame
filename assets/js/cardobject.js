@@ -290,11 +290,17 @@ class UI {
         // If they dont exist in the hand they are added to the extraCards array
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
-                cardObject.number === existingCard.number && cardObject.suit === existingCard.suit
-            })
-            return exists
-        })
+                const suit = (cardObject.suit === "heart" && 0) ||
+                    (cardObject.suit === "spade" && 1) ||
+                    (cardObject.suit === "diamond" && 2) ||
+                    (cardObject.suit === "club" && 3)
 
+                // console.log(existingCard, cardObject, cardObject.number === existingCard.value && suit === existingCard.suit)
+                return cardObject.number === existingCard.value && suit === existingCard.suit
+            })
+            return !exists
+        })
+        // console.log(extraCards)
 
         const displayed = Array.from(handDisplay.children)
 
@@ -316,12 +322,11 @@ class UI {
                     (existingCard.suit === "club" && 3)
 
                 // Card object was created with the value
-                console.log(card, existingCard, card.value === existingCard.number && card.suit === suit)
                 return card.value === existingCard.number && card.suit === suit
             });
             return !exists
         });
-        console.log(graphicsUpdate)
+
 
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
