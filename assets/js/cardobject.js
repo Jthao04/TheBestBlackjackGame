@@ -250,10 +250,10 @@ class UI {
 
     // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added
     async updateTable(hand, handDisplay) {
-        // If something is still animating wait and check again in 10ms
-        while (this.active) {
-            await new Promise((resolve) => setTimeout(resolve, 10))
-        }
+        // // If something is still animating wait and check again in 10ms
+        // while (this.active) {
+        //     await new Promise((resolve) => setTimeout(resolve, 10))
+        // }
 
         // Get all of the current card in the display
         // Create an empty array to push card objects to
