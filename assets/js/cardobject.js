@@ -290,7 +290,8 @@ class UI {
         // If they dont exist in the hand they are added to the extraCards array
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
-                cardObject.value === existingCard.number && cardObject.suit === existingCard.suit
+                console.log(cardObject.number, existingCard.value)
+                cardObject.number === existingCard.value && cardObject.suit === existingCard.suit
             })
             return !exists
         })
@@ -300,7 +301,7 @@ class UI {
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-                if (cardObject.number === parseInt(element.dataset.number) && suit === element.dataset.suit) {
+                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
                     this.slideAway(element)
                 }
             })
@@ -318,12 +319,11 @@ class UI {
 
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
-            console.log(cardObject)
+
             const suit = (cardObject.suit === 0 && "heart") ||
                 (cardObject.suit === 1 && "spade") ||
                 (cardObject.suit === 2 && "diamond") ||
                 (cardObject.suit === 3 && "club")
-            console.log(cardObject.value, suit)
             const cardElement = createCard(cardObject.value, suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
@@ -335,7 +335,7 @@ class UI {
     async update(timestamp) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
-            await new Promise((resolve) => setTimeout(resolve, 10))
+            return
         }
 
         // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
@@ -362,14 +362,16 @@ ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), d
 const playerHand = []
 const dealerHand = []
 const theDeck = []
+
+
+ui.init(playerHand, dealerHand, theDeck);
+ui.start()
+
 for (let i = 0; i < 11; i++) {
     const cardObject = {
-        value: i & 13,
-        suit: i % 4
+        value: i,
+        suit: 3
     }
     playerHand.push(cardObject)
 }
 console.log(theDeck)
-ui.init(playerHand, dealerHand, theDeck);
-
-ui.updateTable(playerHand, document.querySelector("#player"))
