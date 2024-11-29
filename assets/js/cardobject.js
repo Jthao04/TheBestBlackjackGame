@@ -332,6 +332,7 @@ class UI {
             await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
+        // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
         if (this.cardsDealt > 51) {
             this.animateShuffle()
             this.cardsDealt = 0;
@@ -340,9 +341,6 @@ class UI {
         // // Update both Tables
         // this.updateTable(this.dealerHand, this.dealerBoardDisplay)
         // this.updateTable(this.playerHand, this.playerBoardDisplay)
-
-
-        // TODO: Is deck empty?
 
         console.log(timestamp)
         requestAnimationFrame(this.update)
