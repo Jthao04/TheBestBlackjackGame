@@ -13,7 +13,7 @@ function createCard(number, suit) {
     cardBody.style.padding = "15px";
     cardBody.style.alignItems = "center"
 
-    cardBody.dataset.number = inputNumber;
+    cardBody.dataset.number = number;
     cardBody.dataset.suit = suit;
 
     // Creates two spans that are positioned absolutely
@@ -260,16 +260,18 @@ class UI {
     }
 
     async updateTable(hand, handDisplay) {
+        // If something is still animating wait and check again in 10ms
         while (this.active) {
             await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
-        // TODO: This was a mock existing display array that contains array objects. ill need to get that info
+        // Get all of the current card in the display
+        // Create an empty array to push card objects to
         const displayedCard = Array.from(handDisplay.children)
-        //
-
         const existingDisplay = []
 
+        // Creates an object that has the number and suit
+        // Pushes an object for each card in the display to the existing display
         displayedCard.forEach(card => {
             const cardObject = {
                 number: parseInt(card.dataset.number),
@@ -277,7 +279,6 @@ class UI {
             }
             existingDisplay.push(cardObject)
         })
-
 
         // This will update the graphics with anything that is in the hand and not rendered
         const graphicsUpdate = hand.filter(card => {
@@ -288,22 +289,17 @@ class UI {
             return !exists
         });
 
+        graphicsUpdate.forEach(cardObject => {
+            console.log(cardObject)
+            const cardElement = createCard(cardObject.value, cardObject.suit)
+
+            this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
+        });
+
+
         console.log(hand)
-        console.log(existingDisplay)
+        console.log(existingDisplay);
         console.log(graphicsUpdate)
-
-
-
-
-
-
-
-        // This gets the text content of the span of the card to determine the card index
-
-        //     // check the display to see what is rendered.
-        //     // Check the hand to see what it holds
-        //     // if the card exists in the hand and not the display render the card
-        //     // if the card exists in the hand and the display do nothing
     }
 
     update(timestamp) {
@@ -345,7 +341,6 @@ ui.init(playerBoard, dealerBoard, false);
 
 
 for (let i = 0; i <= 2; i++) {
-    console.log(i)
     ui.slideToPlayer(createCard(i, "diamond"))
 }
 
