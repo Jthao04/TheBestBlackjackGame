@@ -172,6 +172,7 @@ function createCard(number, suit) {
 class UI {
     constructor() {
         this.active = false;
+        this.cardsDealt = 0
         // Bind the update function to the initial instance
         this.update = this.update.bind(this);
     }
@@ -228,11 +229,13 @@ class UI {
     }
 
     async animateShuffle() {
+        this.active = true
         this.deckGraphic.setAttribute("data-shuffle", "true")
 
         await new Promise((resolve) => setTimeout(resolve, 1500))
 
         this.deckGraphic.setAttribute("data-shuffle", "false")
+        this.active = false
     }
 
     async slideAway(element) {
@@ -318,6 +321,7 @@ class UI {
             const cardElement = createCard(cardObject.value, cardObject.suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
+            this.cardsDealt++
         });
 
     }
@@ -328,9 +332,14 @@ class UI {
             await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
-        // Update both Tables
-        this.updateTable(this.dealerHand, this.dealerBoardDisplay)
-        this.updateTable(this.playerHand, this.playerBoardDisplay)
+        if (this.cardsDealt > 51) {
+            this.animateShuffle()
+            this.cardsDealt = 0;
+        }
+
+        // // Update both Tables
+        // this.updateTable(this.dealerHand, this.dealerBoardDisplay)
+        // this.updateTable(this.playerHand, this.playerBoardDisplay)
 
 
         // TODO: Is deck empty?
@@ -345,3 +354,6 @@ class UI {
 }
 
 const ui = new UI;
+ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
+
+ui.start()
