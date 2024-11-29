@@ -338,11 +338,10 @@ class UI {
             this.cardsDealt = 0;
         }
 
-        // // Update both Tables
-        // this.updateTable(this.dealerHand, this.dealerBoardDisplay)
-        // this.updateTable(this.playerHand, this.playerBoardDisplay)
+        // Update both Tables
+        this.updateTable(this.dealerHand, this.dealerBoardDisplay)
+        this.updateTable(this.playerHand, this.playerBoardDisplay)
 
-        console.log(timestamp)
         requestAnimationFrame(this.update)
     }
 
@@ -353,5 +352,3 @@ class UI {
 
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
-
-ui.start()
