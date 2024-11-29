@@ -294,7 +294,7 @@ class UI {
             })
             return exists
         })
-        console.log(extraCards, existingDisplay)
+
 
         const displayed = Array.from(handDisplay.children)
 
@@ -309,12 +309,19 @@ class UI {
 
         // This will create an array that contains cardObjects with the existing display information
         const graphicsUpdate = hand.filter(card => {
-            const exists = existingDisplay.some(existingCard =>
+            const exists = existingDisplay.some(existingCard => {
+                const suit = (existingCard.suit === "heart" && 0) ||
+                    (existingCard.suit === "spade" && 1) ||
+                    (existingCard.suit === "diamond" && 2) ||
+                    (existingCard.suit === "club" && 3)
+
                 // Card object was created with the value
-                card.value === existingCard.number && card.suit === existingCard.suit
-            );
+                console.log(card, existingCard, card.value === existingCard.number && card.suit === suit)
+                return card.value === existingCard.number && card.suit === suit
+            });
             return !exists
         });
+        console.log(graphicsUpdate)
 
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
@@ -366,7 +373,7 @@ const theDeck = []
 ui.init(playerHand, dealerHand, theDeck);
 ui.start()
 
-for (let i = 0; i < 11; i++) {
+for (let i = 0; i < 3; i++) {
     const cardObject = {
         value: i,
         suit: 3
