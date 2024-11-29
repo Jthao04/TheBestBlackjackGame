@@ -295,11 +295,6 @@ class UI {
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
         });
-
-
-        console.log(hand)
-        console.log(existingDisplay);
-        console.log(graphicsUpdate)
     }
 
     update(timestamp) {
