@@ -294,12 +294,17 @@ class UI {
     async animateShuffle() {
         this.active = true
 
-        this.deckGraphic.style.visibility = "hidden"
-
-        await new Promise((resolve) => setTimeout(resolve, 1500))
-
-        this.deckGraphic.style.visibility = "visible"
-
+        const slideIn = this.deckGraphic.animate(
+            [
+                { transform: `translateX(-20vw)` },
+                { transform: "translateX(0)" }
+            ],
+            {
+                duration: 2000,
+                iterations: 1
+            }
+        )
+        await slideIn.finished
 
 
         this.deckGraphic.setAttribute("data-shuffle", "true")
