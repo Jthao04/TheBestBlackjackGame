@@ -227,9 +227,10 @@ function createCard(number, suit) {
     return cardBody
 }
 
-// Deck booleen
-// Boards are arrays
-// { value: 0-12, suit: 0-3 }
+
+
+
+
 
 
 class UI {
@@ -456,18 +457,3 @@ class UI {
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
 
-const playerHand = []
-const dealerHand = []
-const theDeck = []
-
-
-ui.init(playerHand, dealerHand, theDeck);
-ui.start()
-
-for (let i = 0; i < 52; i++) {
-    const cardObject = {
-        value: i % 13,
-        suit: i % 4
-    }
-    playerHand.push(cardObject)
-}
