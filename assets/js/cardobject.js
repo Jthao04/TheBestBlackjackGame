@@ -290,12 +290,11 @@ class UI {
         // If they dont exist in the hand they are added to the extraCards array
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
-                console.log(cardObject.number, existingCard.value)
-                cardObject.number === existingCard.value && cardObject.suit === existingCard.suit
+                cardObject.number === existingCard.number && cardObject.suit === existingCard.suit
             })
-            return !exists
+            return exists
         })
-
+        console.log(extraCards, existingDisplay)
 
         const displayed = Array.from(handDisplay.children)
 
@@ -335,7 +334,7 @@ class UI {
     async update(timestamp) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
-            return
+            await new Promise((resolve) => setTimeout(resolve, 1000));
         }
 
         // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
@@ -374,4 +373,3 @@ for (let i = 0; i < 11; i++) {
     }
     playerHand.push(cardObject)
 }
-console.log(theDeck)
