@@ -292,11 +292,13 @@ class UI {
         // console.log(existingDisplay)
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
-                const suit = (cardObject.suit === "heart" && 0) ||
-                    (cardObject.suit === "spade" && 1) ||
-                    (cardObject.suit === "diamond" && 2) ||
-                    (cardObject.suit === "club" && 3)
 
+                const suit = cardObject.suit === "heart" ? 0 :
+                    cardObject.suit === "spade" ? 1 :
+                        cardObject.suit === "diamond" ? 2 :
+                            cardObject.suit === "club" ? 3 :
+
+                                console.log(cardObject, suit, existingCard)
                 // console.log(existingCard, cardObject, cardObject.number === existingCard.value && suit === existingCard.suit)
                 return cardObject.number === existingCard.value && suit === existingCard.suit
             })
@@ -308,14 +310,11 @@ class UI {
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-
-                const suit = (cardObject.suit === "heart" && 0) ||
-                    (cardObject.suit === "spade" && 1) ||
-                    (cardObject.suit === "diamond" && 2) ||
-                    (cardObject.suit === "club" && 3)
-
                 console.log(element.dataset.suit, cardObject.suit)
+                console.log(cardObject.number, parseInt(element.dataset.number))
+
                 if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
+
                     this.slideAway(element)
                 }
             })
@@ -325,10 +324,13 @@ class UI {
         // This will create an array that contains cardObjects with the existing display information
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard => {
-                const suit = (existingCard.suit === "heart" && 0) ||
-                    (existingCard.suit === "spade" && 1) ||
-                    (existingCard.suit === "diamond" && 2) ||
-                    (existingCard.suit === "club" && 3)
+                const suit =
+                    existingCard.suit === "heart" ? 0 :
+                        existingCard.suit === "spade" ? 1 :
+                            existingCard.suit === "diamond" ? 2 :
+                                existingCard.suit === "club" ? 3 :
+                                    null; // Default case if suit doesn't match
+
 
                 // Card object was created with the value
                 return card.value === existingCard.number && card.suit === suit
@@ -392,5 +394,5 @@ for (let i = 0; i < 3; i++) {
         value: i,
         suit: 0
     }
-    // playerHand.push(cardObject)
+    playerHand.push(cardObject)
 }
