@@ -328,10 +328,11 @@ class UI {
             await new Promise((resolve) => setTimeout(resolve, 10))
         }
 
-        // TODO:updatePlayerTable()
-        this.updateTable(this.playerHand, this.playerBoardDisplay)
-        // TODO: updateDealerTable()
+        // Update both Tables
         this.updateTable(this.dealerHand, this.dealerBoardDisplay)
+        this.updateTable(this.playerHand, this.playerBoardDisplay)
+
+
         // TODO: Is deck empty?
 
         console.log(timestamp)
