@@ -176,6 +176,19 @@ class UI {
         this.update = this.update.bind(this);
     }
 
+    // This is a setup function that finds the addresses for the area to display each animation
+    setup(playerTableDisplay, dealerTableDisplay, deckGraphic) {
+        this.dealerBoardDisplay = dealerTableDisplay;
+        this.playerBoardDisplay = playerTableDisplay;
+        this.deckGraphic = deckGraphic;
+    }
+    // This is an init function that finds the addresses for the game objects from the games logic
+    init(playerHand, dealerHand, deckEmpty) {
+        this.dealerHand = dealerHand;
+        this.playerHand = playerHand;
+        this.deckEmpty = deckEmpty
+    }
+
     async slideFromTo(element, orginElement, destinationElement) {
         while (this.active) {
             await new Promise((resolve) => setTimeout(resolve, 10))
@@ -327,19 +340,6 @@ class UI {
 
     start() {
         requestAnimationFrame(this.update)
-    }
-
-    // This is a setup function that finds the addresses for the area to display each animation
-    setup(playerTableDisplay, dealerTableDisplay, deckGraphic) {
-        this.dealerBoardDisplay = dealerTableDisplay;
-        this.playerBoardDisplay = playerTableDisplay;
-        this.deckGraphic = deckGraphic;
-    }
-    // This is an init function that finds the addresses for the game objects from the games logic
-    init(playerHand, dealerHand, deckEmpty) {
-        this.dealerHand = dealerHand;
-        this.playerHand = playerHand;
-        this.deckEmpty = deckEmpty
     }
 }
 
