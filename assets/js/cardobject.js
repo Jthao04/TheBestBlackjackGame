@@ -57,7 +57,7 @@ function createCard(number, suit) {
             symbol0.src = symbolSource
             symbol0.style.position = "absolute"
             symbol0.style.width = "100%";
-            symbol0.style.bottom = "-50%"
+            symbol0.style.bottom = "-100%"
             symbol0.style.left = "50%"
             symbol0.style.transform = "translateX(-50%)"
 
@@ -65,7 +65,7 @@ function createCard(number, suit) {
             symbol1.src = symbolSource
             symbol1.style.position = "absolute"
             symbol1.style.width = "100%";
-            symbol1.style.bottom = "-50%"
+            symbol1.style.bottom = "-100%"
             symbol1.style.left = "50%"
             symbol1.style.transform = "translateX(-50%)"
 
@@ -82,7 +82,7 @@ function createCard(number, suit) {
             symbol0.src = symbolSource
             symbol0.style.position = "absolute"
             symbol0.style.width = "100%";
-            symbol0.style.bottom = "-50%"
+            symbol0.style.bottom = "-100%"
             symbol0.style.left = "50%"
             symbol0.style.transform = "translateX(-50%)"
 
@@ -90,7 +90,7 @@ function createCard(number, suit) {
             symbol1.src = symbolSource
             symbol1.style.position = "absolute"
             symbol1.style.width = "100%";
-            symbol1.style.bottom = "-50%"
+            symbol1.style.bottom = "-100%"
             symbol1.style.left = "50%"
             symbol1.style.transform = "translateX(-50%)"
 
@@ -107,7 +107,7 @@ function createCard(number, suit) {
             symbol0.src = symbolSource
             symbol0.style.position = "absolute"
             symbol0.style.width = "100%";
-            symbol0.style.bottom = "-50%"
+            symbol0.style.bottom = "-100%"
             symbol0.style.left = "50%"
             symbol0.style.transform = "translateX(-50%)"
 
@@ -115,7 +115,7 @@ function createCard(number, suit) {
             symbol1.src = symbolSource
             symbol1.style.position = "absolute"
             symbol1.style.width = "100%";
-            symbol1.style.bottom = "-50%"
+            symbol1.style.bottom = "-100%"
             symbol1.style.left = "50%"
             symbol1.style.transform = "translateX(-50%)"
 
@@ -210,7 +210,6 @@ function createCard(number, suit) {
         cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
-        centerColumn.append(allSymbols.pop(), allSymbols.pop())
 
     } else if (originalLength === 12) {
         // IF it is a queen, apply the queen background image and paste in a symbol
@@ -218,14 +217,12 @@ function createCard(number, suit) {
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain"
-        centerColumn.append(allSymbols.pop())
     } else if (originalLength === 13) {
         // IF it is a king, apply the king background image and paste in a symbol
         cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain";
-        centerColumn.append(allSymbols.pop());
     }
     return cardBody
 }
