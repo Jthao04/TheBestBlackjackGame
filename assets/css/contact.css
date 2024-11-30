@@ -126,11 +126,11 @@ main {
   align-items: center;
   justify-content: center;
   /*Box model stuff*/
-  padding-top: 50px;
+  padding-top: 1rem;
 }
 
 /* ///////////////////////////// */
-/* /////////Contact Card Styles///////// */
+/* /////Contact Card Styles///// */
 /* ///////////////////////////// */
 .contactCard {
   /*Display stuff*/
@@ -209,4 +209,22 @@ footer {
   color: var(--tableWhite);
   /*Manipulations stuff*/
   transform: translateX(-50%);
+}
+
+/* ///////////////////////////// */
+/* /////////Footer Styles/////// */
+/* ///////////////////////////// */
+section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+}
+section img {
+  height: 100px;
+  width: auto;
+}
+section a {
+  text-decoration: none;
+  color: var(--tableWhite);
 }
