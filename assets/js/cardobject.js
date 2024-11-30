@@ -433,7 +433,40 @@ class UI {
     }
 
     updateScore() {
-        // TODO: Get the sums from each hand and append it to the dom in the appropriate plave
+        // TODO: Get the sums from each hand and append it to the dom in the appropriate place
+        function getTotal(hand) {
+            const aces = []
+            const values = []
+            let total = 0;
+
+            // Remove the aces as they must be added last
+            hand.forEach(card => {
+                if (card.value === 0) {
+                    aces.push(card.value)
+                } else { values.push(card.value) }
+            })
+
+            // If the card is a 1-10 append the value; otherwise add 10 for a face card
+            values.forEach(value => {
+                if (value < 10) {
+                    total += value + 1
+                } else {
+                    total += 10
+                }
+            })
+
+            aces.forEach(value => {
+                total += 1
+                if (total + 10 < 21) {
+                    total += 10
+                }
+            })
+
+            return total
+        }
+
+        this.dealerBoardDisplay.previousElementSibling.textContent = getTotal(this.dealerHand)
+        this.playerBoardDisplay.previousElementSibling.textContent = getTotal(this.playerHand)
     }
 
     async update(timestamp) {
@@ -451,6 +484,7 @@ class UI {
         // Update both Tables
         this.updateTable(this.dealerHand, this.dealerBoardDisplay)
         this.updateTable(this.playerHand, this.playerBoardDisplay)
+        this.updateScore()
 
         requestAnimationFrame(this.update)
     }
