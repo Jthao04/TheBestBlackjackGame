@@ -121,6 +121,9 @@ main {
   flex-wrap: wrap;
 }
 
+/* ///////////////////////////// */
+/* /////////Contact Card Styles///////// */
+/* ///////////////////////////// */
 .contactCard {
   /*Box model stuff*/
   width: 300px;
@@ -135,21 +138,29 @@ main {
   text-align: center;
   gap: 5px;
   font-size: clamp(1px, 1rem, 1rem);
+  border-radius: 10px;
 }
 .contactCard img {
   width: 90%;
   height: auto;
   margin-bottom: 1vh;
+  border-radius: inherit;
 }
 .contactCard h2 {
   font-size: 2rem;
   font-family: boardFont;
 }
 .contactCard p {
+  padding: 10px;
+  border-radius: inherit;
+}
+.contactCard div {
+  border-radius: inherit;
+  background-color: hsla(0, 0%, 0%, 0.1);
 }
 
 /* ///////////////////////////// */
-/* /////////Footer Styles///////// */
+/* /////////Footer Styles/////// */
 /* ///////////////////////////// */
 footer {
   /*Display stuff*/
