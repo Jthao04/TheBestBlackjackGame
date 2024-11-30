@@ -457,3 +457,17 @@ class UI {
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
 
+const playerBoard = []
+const dealerBoard = []
+const theDeck = []
+
+for (let i = 0; i < 4; i++) {
+    const card0 = {
+        value: i,
+        suit: i
+    }
+    dealerBoard.push(card0)
+}
+
+ui.init(playerBoard, dealerBoard, theDeck)
+ui.start()

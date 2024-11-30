@@ -1,0 +1,60 @@
+@font-face {
+  font-family: casinoSign3d;
+  src: url(../fonts/Casino3DLinesMarquee.ttf);
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translate(0, 4%);
+  }
+  100% {
+    transform: translate(0.05rem, 4%);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background-color: hsl(0, 93%, 5%);
+  height: 100vh;
+  text-align: center;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ///////////////////////////// */
+/* ///////Header Styles///////// */
+/* ///////////////////////////// */
+header {
+  align-items: center;
+  background-color: var(--headerBlack);
+  border: 10px black double;
+  border-radius: 10px;
+  display: flex;
+  height: 10vh;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+header h1 {
+  clip-path: inset(0 0 10% 0);
+  display: flex;
+  font-family: casinoSign3d;
+  font-size: clamp(50px, 8vw, 100px);
+  margin: 0;
+  transform: translateY(4%);
+  z-index: 1;
+}
+header h1:nth-child(2) {
+  color: yellow;
+  position: absolute;
+  z-index: 0;
+  animation: moveLeftRight 0.5s infinite alternate;
+}

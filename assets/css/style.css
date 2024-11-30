@@ -241,6 +241,20 @@ main {
 .deck[data-shuffle="true"] :last-child {
   animation: slideDown 0.4s infinite alternate;
 }
+
+#dealer > .playingCard:first-child::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  background-image: url(../images/card.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 /* ///////////////////////////// */
 /* ///////Playing Buttons/////// */
 /* ///////////////////////////// */
