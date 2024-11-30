@@ -1,8 +1,27 @@
+/* ///////////////////////////// */
+/* ///////Variable Definitions// */
+/* ///////////////////////////// */
+:root {
+  --headerBlack: hsl(0, 0%, 2%);
+  --tableBorders: 5px solid var(--tableWhiteFaded);
+  --tableGreen: hsl(140, 82%, 13%);
+  --tableWhite: hsl(30, 3%, 69%);
+  --tableWhiteFaded: hsla(30, 3%, 69%, 0.8);
+  --translucentGray: hsla(0, 0%, 2%, 0.6);
+  --shadow: -5px 5px 5px black;
+}
+
+/* ///////////////////////////// */
+/* //////Font Definitions/////// */
+/* ///////////////////////////// */
 @font-face {
   font-family: casinoSign3d;
   src: url(../fonts/Casino3DLinesMarquee.ttf);
 }
 
+/* ///////////////////////////// */
+/* ////Animation Definitions//// */
+/* ///////////////////////////// */
 @keyframes moveLeftRight {
   0% {
     transform: translate(0, 4%);
@@ -12,6 +31,9 @@
   }
 }
 
+/* ///////////////////////////// */
+/* /////////Page Styles///////// */
+/* ///////////////////////////// */
 *,
 *::before,
 *::after {
@@ -22,11 +44,7 @@
 body {
   background-color: hsl(0, 93%, 5%);
   height: 100vh;
-  text-align: center;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 /* ///////////////////////////// */
