@@ -285,6 +285,7 @@ class UI {
     }
 
     slideToDealer(element) {
+        this.dealerBoardDisplay.dataset.gameOver = "false"
         this.slideFromTo(element, this.deckGraphic, this.dealerBoardDisplay)
     }
 
@@ -341,6 +342,11 @@ class UI {
         element.parentNode.removeChild(element)
 
         this.active = false
+    }
+
+    revealCard() {
+        this.dealerBoardDisplay.dataset.gameOver = "true"
+        return
     }
 
     // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added

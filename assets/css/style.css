@@ -242,7 +242,7 @@ main {
   animation: slideDown 0.4s infinite alternate;
 }
 
-#dealer[data-gameOver="false"] > .playingCard:first-child::after {
+#dealer[data-game-over="false"] > .playingCard:first-child::after {
   content: " ";
   position: absolute;
   top: 0;
