@@ -18,6 +18,18 @@
   font-family: casinoSign3d;
   src: url(../fonts/Casino3DLinesMarquee.ttf);
 }
+@font-face {
+  font-family: casinoSign;
+  src: url(../fonts/CasinoShadow.ttf);
+}
+@font-face {
+  font-family: boardfont;
+  src: url(../fonts/grandCasinoRegular.otf);
+}
+@font-face {
+  font-family: boardNumber;
+  src: url(../fonts/boardNumbers.ttf);
+}
 
 /* ///////////////////////////// */
 /* ////Animation Definitions//// */
@@ -51,28 +63,76 @@ body {
 /* ///////Header Styles///////// */
 /* ///////////////////////////// */
 header {
+  /*Display stuff*/
+  display: flex;
   align-items: center;
-  background-color: var(--headerBlack);
+  justify-content: center;
+  /*Positioning stuff*/
+  position: relative;
+  /*Box model stuff*/
+  width: 100%;
+  height: 10vh;
   border: 10px black double;
   border-radius: 10px;
-  display: flex;
-  height: 10vh;
-  justify-content: center;
-  position: relative;
-  width: 100%;
+  background-color: var(--headerBlack);
 }
 header h1 {
-  clip-path: inset(0 0 10% 0);
+  /*Display stuff*/
   display: flex;
+  /*Positioning stuff*/
+  z-index: 1;
+  /*Box model stuff*/
+  margin: 0;
+  /*Typography stuff*/
   font-family: casinoSign3d;
   font-size: clamp(50px, 8vw, 100px);
-  margin: 0;
+  /*Manipulations stuff*/
   transform: translateY(4%);
-  z-index: 1;
+  /*Miscellaneous*/
+  clip-path: inset(0 0 10% 0);
 }
 header h1:nth-child(2) {
-  color: yellow;
+  /*Positioning stuff*/
   position: absolute;
   z-index: 0;
+  /*Typography stuff*/
+  color: yellow;
+  /*Manipulations stuff*/
   animation: moveLeftRight 0.5s infinite alternate;
+}
+/* ///////////////////////////// */
+/* /////////Main Styles///////// */
+/* ///////////////////////////// */
+main {
+  /*Display stuff*/
+  display: flex;
+}
+
+.contactCard {
+  /*Box model stuff*/
+  width: 20%;
+  height: 40%;
+  background-color: red;
+}
+
+/* ///////////////////////////// */
+/* /////////Footer Styles///////// */
+/* ///////////////////////////// */
+footer {
+  /*Display stuff*/
+  display: flex;
+  justify-content: center;
+  /*Positioning stuff*/
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  /*Box model stuff*/
+  width: 100%;
+  padding: 3px;
+  background-color: var(--headerBlack);
+  /*Typography stuff*/
+  font-family: sans-serif;
+  color: var(--tableWhite);
+  /*Manipulations stuff*/
+  transform: translateX(-50%);
 }
