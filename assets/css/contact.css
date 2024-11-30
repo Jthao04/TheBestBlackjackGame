@@ -151,6 +151,7 @@ main {
   color: var(--tableWhite);
   /*Miscellaneous*/
   gap: 5px;
+  transition: transform 0.5s;
 }
 .contactCard img {
   /*Box model stuff*/
@@ -175,6 +176,14 @@ main {
   /*Box model stuff*/
   border-radius: inherit;
   background-color: hsla(0, 0%, 0%, 0.1);
+}
+
+.contactCard:hover {
+  transform: scale(115%);
+}
+
+.contactCard:hover div {
+  background-color: hsla(0, 0%, 0%, 0.5);
 }
 
 /* ///////////////////////////// */

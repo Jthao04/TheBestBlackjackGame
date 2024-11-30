@@ -1,6 +1,4 @@
 // Built by scheeseb
-// TODO: Move the styles that dont need to be here back to a seperate styles sheet
-// The ui will not allow for multiple decks currently 
 
 
 function createCard(value, suit) {
@@ -45,7 +43,7 @@ function createCard(value, suit) {
         span1.style.bottom = "5%"
         span1.style.transform = "rotate(180deg)";
 
-
+        // The symbols used on the face cards
         const symbol0 = document.createElement("img")
         symbol0.src = symbolSource
         symbol0.style.position = "absolute"
@@ -62,9 +60,13 @@ function createCard(value, suit) {
         symbol1.style.left = "50%"
         symbol1.style.transform = "translateX(-50%)"
 
+        // If the card is an ace or a face card change the spans text content to corre
         if (inputNumber === 1) {
             span0.textContent = "A";
             span1.textContent = "A";
+
+            span0.appendChild(symbol0)
+            span1.appendChild(symbol1)
         } else
             if (inputNumber === 11) {
                 span0.textContent = "J";
