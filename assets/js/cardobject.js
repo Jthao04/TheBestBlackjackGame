@@ -1,13 +1,11 @@
 // Built by scheeseb
-// TODO: Need to fix the card.value to card.number miscommunication
-// TODO: Fix the suits so they always use a number
 // TODO: Move the styles that dont need to be here back to a seperate styles sheet
 // The ui will not allow for multiple decks currently 
 
 
-function createCard(number, suit) {
-    // add one to 0 indexed input number
-    const inputNumber = number + 1;
+function createCard(value, suit) {
+    // add one to 0 indexed input value
+    const inputNumber = value + 1;
     // create a div for the card body
     const cardBody = document.createElement("div");
     cardBody.className = "playingCard"
@@ -21,7 +19,7 @@ function createCard(number, suit) {
     cardBody.style.alignItems = "center"
     cardBody.style.overflow = "hidden"
 
-    cardBody.dataset.number = number;
+    cardBody.dataset.value = value;
     cardBody.dataset.suit = suit;
 
     const symbolSource = suit === 0 ? "./assets/cardAssets/symbols/hearts.png" :
@@ -166,7 +164,7 @@ function createCard(number, suit) {
         // Determine which symbol to load depending on the suit
 
 
-        // Create as many symbols as the input number and add them to the allSymbols array 
+        // Create as many symbols as the input value and add them to the allSymbols array 
         for (let i = 0; i < inputNumber; i++) {
             const symbolElement = document.createElement("img");
 
@@ -369,11 +367,11 @@ class UI {
         const displayedCard = Array.from(handDisplay.children)
         const existingDisplay = []
 
-        // Creates an object that has the number and suit
+        // Creates an object that has the value and suit
         // Pushes that object for each card in the display to the existing display array
         displayedCard.forEach(card => {
             const cardObject = {
-                number: parseInt(card.dataset.number),
+                value: parseInt(card.dataset.value),
                 suit: parseInt(card.dataset.suit)
             }
             existingDisplay.push(cardObject)
@@ -387,7 +385,7 @@ class UI {
 
                 const suit = cardObject.suit
 
-                return cardObject.number === existingCard.value && suit === existingCard.suit
+                return cardObject.value === existingCard.value && suit === existingCard.suit
             })
             return !exists
         })
@@ -397,7 +395,7 @@ class UI {
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
                 console.log()
-                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === parseInt(element.dataset.suit)) {
+                if (cardObject.value === parseInt(element.dataset.value) && cardObject.suit === parseInt(element.dataset.suit)) {
                     this.slideAway(element)
                 }
             })
@@ -411,7 +409,7 @@ class UI {
                     existingCard.suit
 
                 // Card object was created with the value
-                return card.value === existingCard.number && card.suit === suit
+                return card.value === existingCard.value && card.suit === suit
             });
             return !exists
         });
