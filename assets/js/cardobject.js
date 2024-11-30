@@ -33,7 +33,7 @@ function createCard(value, suit) {
             return span
         }
 
-        const color = ((suit === "heart" || suit === "diamond") && "red") || "black";
+        const color = ((suit === 0 || suit === 2) && "red") || "black";
         const span0 = createSpan();
         const span1 = createSpan()
 
@@ -204,13 +204,13 @@ function createCard(value, suit) {
             rightColumn.append(allSymbols.pop())
         }
     } else if (originalLength === 11) {
-        cardBody.style.backgroundImage = ((suit === 0 || suit === 3) && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 2) && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
 
     } else if (originalLength === 12) {
         // IF it is a queen, apply the queen background image and paste in a symbol
-        cardBody.style.backgroundImage = ((suit === 0 || suit === 3) && 'url("./assets/cardAssets/svg/queenRed.svg")') || 'url("./assets/cardAssets/svg/queenBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 2) && 'url("./assets/cardAssets/svg/queenRed.svg")') || 'url("./assets/cardAssets/svg/queenBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain"
@@ -487,10 +487,10 @@ const playerBoard = []
 const dealerBoard = []
 const theDeck = []
 
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 13; i++) {
     const card0 = {
         value: i,
-        suit: i
+        suit: i % 4
     }
     dealerBoard.push(card0)
 }
