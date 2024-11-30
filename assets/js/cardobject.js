@@ -8,16 +8,8 @@ function createCard(value, suit) {
     const inputNumber = value + 1;
     // create a div for the card body
     const cardBody = document.createElement("div");
+
     cardBody.className = "playingCard"
-    cardBody.style.backgroundColor = "hsl(48, 39%, 83%)";
-    cardBody.style.display = "flex";
-    cardBody.style.width = "clamp(15px, 12vh, 12vh)";
-    cardBody.style.height = "80%";
-    cardBody.style.borderRadius = "10px";
-    cardBody.style.position = "relative";
-    cardBody.style.padding = "15px";
-    cardBody.style.alignItems = "center"
-    cardBody.style.overflow = "hidden"
 
     cardBody.dataset.value = value;
     cardBody.dataset.suit = suit;

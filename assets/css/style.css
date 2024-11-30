@@ -193,6 +193,15 @@ main {
 .playingCard {
   box-shadow: var(--shadow);
   margin-left: -30px;
+  background-color: hsl(48, 39%, 83%);
+  display: flex;
+  width: clamp(15px, 12vh, 12vh);
+  height: 80%;
+  border-radius: 10px;
+  position: relative;
+  padding: 15px;
+  align-items: center;
+  overflow: hidden;
 }
 
 /* ///////////////////////////// */
