@@ -24,10 +24,9 @@ function createCard(value, suit) {
     function appendSpans() {
         function createSpan() {
             const span = document.createElement("span");
-            span.style.position = "absolute";
-            span.style.fontSize = "clamp(1px, 2vw, 20px)";
-            span.style.fontWeight = "bolder";
-            span.style.fontFamily = "serif";
+
+            span.className = "symbolSpan"
+
             span.style.color = color;
             span.textContent = inputNumber;
 

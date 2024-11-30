@@ -191,17 +191,29 @@ main {
 /* ////////Card Styles////////// */
 /* ///////////////////////////// */
 .playingCard {
-  box-shadow: var(--shadow);
-  margin-left: -30px;
-  background-color: hsl(48, 39%, 83%);
+  /*Display stuff*/
   display: flex;
+  align-items: center;
+  /*Positioning stuff*/
+  position: relative;
+  /*Box model stuff*/
   width: clamp(15px, 12vh, 12vh);
   height: 80%;
-  border-radius: 10px;
-  position: relative;
+  margin-left: -30px;
   padding: 15px;
-  align-items: center;
+  border-radius: 10px;
+  background-color: hsl(48, 39%, 83%);
+  /*Miscellaneous*/
+  box-shadow: var(--shadow);
   overflow: hidden;
+}
+.symbolSpan {
+  /*Positioning stuff*/
+  position: absolute;
+  /*Typography stuff*/
+  font-family: serif;
+  font-size: clamp(1px, 2vw, 20px);
+  font-weight: bolder;
 }
 
 /* ///////////////////////////// */
