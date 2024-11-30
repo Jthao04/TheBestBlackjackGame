@@ -1,3 +1,7 @@
+// Built by scheeseb
+// TODO: Need to fix the card.value to card.number miscommunication
+// TODO: Fix the suits so they always use a number
+
 function createCard(number, suit) {
     // add one to 0 indexed input number
     const inputNumber = number + 1;
