@@ -1,6 +1,9 @@
 // Built by scheeseb
 // TODO: Need to fix the card.value to card.number miscommunication
 // TODO: Fix the suits so they always use a number
+// TODO: Move the styles that dont need to be here back to a seperate styles sheet
+// The ui will not allow for multiple decks currently 
+
 
 function createCard(number, suit) {
     // add one to 0 indexed input number
