@@ -149,9 +149,10 @@ main {
   font-size: clamp(1px, 1rem, 1rem);
   text-align: center;
   color: var(--tableWhite);
+  /*Manipulations stuff*/
+  transition: transform 0.5s;
   /*Miscellaneous*/
   gap: 5px;
-  transition: transform 0.5s;
 }
 .contactCard img {
   /*Box model stuff*/
@@ -179,10 +180,12 @@ main {
 }
 
 .contactCard:hover {
+  /*Manipulations stuff*/
   transform: scale(115%);
 }
 
 .contactCard:hover div {
+  /*Box model stuff*/
   background-color: hsla(0, 0%, 0%, 0.5);
 }
 
