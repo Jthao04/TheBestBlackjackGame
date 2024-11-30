@@ -254,6 +254,7 @@ main {
   background-image: url(../images/card.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 /* ///////////////////////////// */
 /* ///////Playing Buttons/////// */
