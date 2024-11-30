@@ -24,10 +24,11 @@ function createCard(number, suit) {
     cardBody.dataset.number = number;
     cardBody.dataset.suit = suit;
 
-    const symbolSource = (suit === "heart" && "./assets/cardAssets/symbols/hearts.png") ||
-        (suit === "club" && "./assets/cardAssets/symbols/clubs.png") ||
-        (suit === "diamond" && "./assets/cardAssets/symbols/diamonds.png") ||
-        (suit === "spade" && "./assets/cardAssets/symbols/spades.png");
+    const symbolSource = suit === 0 ? "./assets/cardAssets/symbols/hearts.png" :
+        suit === 1 ? "./assets/cardAssets/symbols/clubs.png" :
+            suit === 2 ? "./assets/cardAssets/symbols/diamonds.png" :
+                suit === 3 ? "./assets/cardAssets/symbols/spades.png" :
+                    null
 
     // Creates two spans that are positioned absolutely
     function appendSpans() {
@@ -214,19 +215,19 @@ function createCard(number, suit) {
             rightColumn.append(allSymbols.pop())
         }
     } else if (originalLength === 11) {
-        cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 3) && 'url("./assets/cardAssets/svg/jackRed.svg")') || 'url("./assets/cardAssets/svg/jackBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
 
     } else if (originalLength === 12) {
         // IF it is a queen, apply the queen background image and paste in a symbol
-        cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/queenRed.svg")') || 'url("./assets/cardAssets/svg/queenBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 3) && 'url("./assets/cardAssets/svg/queenRed.svg")') || 'url("./assets/cardAssets/svg/queenBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain"
     } else if (originalLength === 13) {
         // IF it is a king, apply the king background image and paste in a symbol
-        cardBody.style.backgroundImage = ((suit === "heart" || suit === "diamond") && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 0) && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain";
@@ -384,11 +385,7 @@ class UI {
         const extraCards = existingDisplay.filter(cardObject => {
             const exists = hand.some(existingCard => {
 
-                const suit = cardObject.suit === "heart" ? 0 :
-                    cardObject.suit === "spade" ? 1 :
-                        cardObject.suit === "diamond" ? 2 :
-                            cardObject.suit === "club" ? 3 :
-                                null
+                const suit = cardObject.suit
 
                 return cardObject.number === existingCard.value && suit === existingCard.suit
             })
@@ -399,7 +396,8 @@ class UI {
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === element.dataset.suit) {
+                console.log()
+                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === arseInt(element.dataset.suit)) {
                     this.slideAway(element)
                 }
             })
@@ -410,12 +408,7 @@ class UI {
         const graphicsUpdate = hand.filter(card => {
             const exists = existingDisplay.some(existingCard => {
                 const suit =
-                    existingCard.suit === "heart" ? 0 :
-                        existingCard.suit === "spade" ? 1 :
-                            existingCard.suit === "diamond" ? 2 :
-                                existingCard.suit === "club" ? 3 :
-                                    null; // Default case if suit doesn't match
-
+                    existingCard.suit
 
                 // Card object was created with the value
                 return card.value === existingCard.number && card.suit === suit
@@ -427,10 +420,7 @@ class UI {
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
 
-            const suit = (cardObject.suit === 0 && "heart") ||
-                (cardObject.suit === 1 && "spade") ||
-                (cardObject.suit === 2 && "diamond") ||
-                (cardObject.suit === 3 && "club")
+            const suit = cardObject.suit
             const cardElement = createCard(cardObject.value, suit)
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
