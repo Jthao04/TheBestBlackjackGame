@@ -374,7 +374,7 @@ class UI {
         displayedCard.forEach(card => {
             const cardObject = {
                 number: parseInt(card.dataset.number),
-                suit: card.dataset.suit
+                suit: parseInt(card.dataset.suit)
             }
             existingDisplay.push(cardObject)
         })
@@ -397,7 +397,7 @@ class UI {
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
                 console.log()
-                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === arseInt(element.dataset.suit)) {
+                if (cardObject.number === parseInt(element.dataset.number) && cardObject.suit === parseInt(element.dataset.suit)) {
                     this.slideAway(element)
                 }
             })
