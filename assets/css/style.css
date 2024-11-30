@@ -297,7 +297,7 @@ main {
 /* ///////////////////////////// */
 footer {
   flex: 1;
-  background-color: var(--translucentGray);
+  background-color: var(--headerBlack);
   color: var(--tableWhite);
   position: absolute;
   bottom: 0;

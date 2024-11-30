@@ -33,7 +33,7 @@ function createCard(value, suit) {
             return span
         }
 
-        const color = ((suit === 0 || suit === 2) && "red") || "black";
+        const color = ((suit === 0 || suit === 2) && "hsl(0, 100%, 40%)") || "black";
         const span0 = createSpan();
         const span1 = createSpan()
 
@@ -45,85 +45,86 @@ function createCard(value, suit) {
         span1.style.bottom = "5%"
         span1.style.transform = "rotate(180deg)";
 
+
+        const symbol0 = document.createElement("img")
+        symbol0.src = symbolSource
+        symbol0.style.position = "absolute"
+        symbol0.style.width = "100%";
+        symbol0.style.bottom = "-100%"
+        symbol0.style.left = "50%"
+        symbol0.style.transform = "translateX(-50%)"
+
+        const symbol1 = document.createElement("img")
+        symbol1.src = symbolSource
+        symbol1.style.position = "absolute"
+        symbol1.style.width = "100%";
+        symbol1.style.bottom = "-100%"
+        symbol1.style.left = "50%"
+        symbol1.style.transform = "translateX(-50%)"
+
         if (inputNumber === 1) {
             span0.textContent = "A";
             span1.textContent = "A";
-        }
-        if (inputNumber === 11) {
-            const symbol0 = document.createElement("img")
-            symbol0.src = symbolSource
-            symbol0.style.position = "absolute"
-            symbol0.style.width = "100%";
-            symbol0.style.bottom = "-100%"
-            symbol0.style.left = "50%"
-            symbol0.style.transform = "translateX(-50%)"
+        } else
+            if (inputNumber === 11) {
+                span0.textContent = "J";
+                span1.textContent = "J";
+                span0.style.width = '20%'
+                span1.style.width = '20%'
 
-            const symbol1 = document.createElement("img")
-            symbol1.src = symbolSource
-            symbol1.style.position = "absolute"
-            symbol1.style.width = "100%";
-            symbol1.style.bottom = "-100%"
-            symbol1.style.left = "50%"
-            symbol1.style.transform = "translateX(-50%)"
+                span0.appendChild(symbol0)
+                span1.appendChild(symbol1)
+            } else
+                if (inputNumber === 12) {
+                    const symbol0 = document.createElement("img")
+                    symbol0.src = symbolSource
+                    symbol0.style.position = "absolute"
+                    symbol0.style.width = "100%";
+                    symbol0.style.bottom = "-100%"
+                    symbol0.style.left = "50%"
+                    symbol0.style.transform = "translateX(-50%)"
 
-            span0.textContent = "J";
-            span1.textContent = "J";
-            span0.style.width = '20%'
-            span1.style.width = '20%'
+                    const symbol1 = document.createElement("img")
+                    symbol1.src = symbolSource
+                    symbol1.style.position = "absolute"
+                    symbol1.style.width = "100%";
+                    symbol1.style.bottom = "-100%"
+                    symbol1.style.left = "50%"
+                    symbol1.style.transform = "translateX(-50%)"
 
-            span0.appendChild(symbol0)
-            span1.appendChild(symbol1)
-        }
-        if (inputNumber === 12) {
-            const symbol0 = document.createElement("img")
-            symbol0.src = symbolSource
-            symbol0.style.position = "absolute"
-            symbol0.style.width = "100%";
-            symbol0.style.bottom = "-100%"
-            symbol0.style.left = "50%"
-            symbol0.style.transform = "translateX(-50%)"
+                    span0.textContent = "Q";
+                    span1.textContent = "Q";
+                    span0.style.width = '20%'
+                    span1.style.width = '20%'
 
-            const symbol1 = document.createElement("img")
-            symbol1.src = symbolSource
-            symbol1.style.position = "absolute"
-            symbol1.style.width = "100%";
-            symbol1.style.bottom = "-100%"
-            symbol1.style.left = "50%"
-            symbol1.style.transform = "translateX(-50%)"
+                    span0.appendChild(symbol0)
+                    span1.appendChild(symbol1)
+                } else
+                    if (inputNumber === 13) {
+                        const symbol0 = document.createElement("img")
+                        symbol0.src = symbolSource
+                        symbol0.style.position = "absolute"
+                        symbol0.style.width = "100%";
+                        symbol0.style.bottom = "-100%"
+                        symbol0.style.left = "50%"
+                        symbol0.style.transform = "translateX(-50%)"
 
-            span0.textContent = "Q";
-            span1.textContent = "Q";
-            span0.style.width = '20%'
-            span1.style.width = '20%'
+                        const symbol1 = document.createElement("img")
+                        symbol1.src = symbolSource
+                        symbol1.style.position = "absolute"
+                        symbol1.style.width = "100%";
+                        symbol1.style.bottom = "-100%"
+                        symbol1.style.left = "50%"
+                        symbol1.style.transform = "translateX(-50%)"
 
-            span0.appendChild(symbol0)
-            span1.appendChild(symbol1)
-        }
-        if (inputNumber === 13) {
-            const symbol0 = document.createElement("img")
-            symbol0.src = symbolSource
-            symbol0.style.position = "absolute"
-            symbol0.style.width = "100%";
-            symbol0.style.bottom = "-100%"
-            symbol0.style.left = "50%"
-            symbol0.style.transform = "translateX(-50%)"
+                        span0.textContent = "K";
+                        span1.textContent = "K";
+                        span0.style.width = '20%'
+                        span1.style.width = '20%'
 
-            const symbol1 = document.createElement("img")
-            symbol1.src = symbolSource
-            symbol1.style.position = "absolute"
-            symbol1.style.width = "100%";
-            symbol1.style.bottom = "-100%"
-            symbol1.style.left = "50%"
-            symbol1.style.transform = "translateX(-50%)"
-
-            span0.textContent = "K";
-            span1.textContent = "K";
-            span0.style.width = '20%'
-            span1.style.width = '20%'
-
-            span0.appendChild(symbol0)
-            span1.appendChild(symbol1)
-        }
+                        span0.appendChild(symbol0)
+                        span1.appendChild(symbol1)
+                    }
 
         cardBody.append(span0, span1);
     }
