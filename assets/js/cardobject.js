@@ -408,6 +408,16 @@ class UI {
             return !exists
         });
 
+        console.log(this.dealerHand.length)
+        if (this.dealerHand.length === 0) {
+            console.log("dealerFew")
+            const suit = cardObject.suit
+            const cardElement = createCard(cardObject.value, suit)
+
+            this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
+            this.cardsDealt++
+            return
+        }
 
         // Add the new cards into the deck
         graphicsUpdate.forEach(cardObject => {
@@ -490,13 +500,17 @@ const playerBoard = []
 const dealerBoard = []
 const theDeck = []
 
+
+
+ui.init(playerBoard, dealerBoard, theDeck)
+ui.start()
+
 for (let i = 0; i < 13; i++) {
     const card0 = {
         value: i,
         suit: i % 4
     }
+    const card1 = card0
     dealerBoard.push(card0)
+    playerBoard.push(card1)
 }
-
-ui.init(playerBoard, dealerBoard, theDeck)
-ui.start()
