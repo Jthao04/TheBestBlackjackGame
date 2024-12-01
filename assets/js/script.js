@@ -1,7 +1,6 @@
 const deckObject = {
     cards: [],
-    numberOfDecks: 1,
-    numberOfCards: 52,
+    numberOfDecks: 4,
     /*
        Create 
        fills the cards array with 52 cards times the number of decks.  
@@ -9,7 +8,7 @@ const deckObject = {
       */
     create: function () {
         for (let i = 0; i < this.numberOfDecks; i++)
-            for (let j = 0; j < this.numberOfCards; j++) {
+            for (let j = 0; j < 52; j++) {
                 this.cards.push(j);
             }
 
@@ -26,28 +25,43 @@ const deckObject = {
                 array[top] = tmp;
             }
         cards = array;
-    },
+    }, 
+    emptyDeck : function(){
+        if(this.cards.length==0){
+            return true; 
+        }
+        else{
+            return false;
+        }
+    }
 };
+
+const deck = deckObject;
+
+let player = {
+    cards : [],
+    score : 0, 
+    ace : false
+}
+
+let dealer = {
+    cards : [],
+    score : 0, 
+    ace : false
+}
+
 /*  Function: drawcard
     The purpose for this function is to draw a card from the deck, before doing so it checks to see if there are any cards in the deck, refills and shuffles deck if empty.
     The method to pull out the value and suit of the card is done by running two math operations on the value of the card that was popped from the deck. 
 */
-drawCard = function (deck) {
-    if (deck.cards.length == 0) {
-        deck.create;
-    }
+drawCard = function () {
+    if (deck.emptyDeck()) deck.create();
+
     let temp = deck.cards.pop();
 
     const cardInfo = { value: temp % 13, suit: Math.floor(temp / 13) };
     return cardInfo;
 };
-
-const deck = deckObject;
-
-deck.create();
-
-
-
 
 
 // This is the board object that we can copy from
