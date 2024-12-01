@@ -24,13 +24,15 @@
     </header>
     <main>
       <section class="table">
-        <div class="playArea" id="dealer">
+        <div class="playArea">
           <h2>Dealer</h2>
           <p class="score" id="dealerScore">0</p>
+          <div id="dealer" data-game-over="false"></div>
         </div>
-        <div class="playArea" id="player">
+        <div class="playArea">
           <h2>Player</h2>
           <p class="score" id="playerScore">0</p>
+          <div id="player"></div>
         </div>
         <div class="deck" id="deck" data-shuffle="false">
           <img src="./assets/images/card.png" alt="A deck of Cards" />
@@ -50,8 +52,8 @@
     </main>
     <footer>
       <p>
-        Impressed? <a href="./contacts.html">Contact the developers</a> and let
-        them know!
+        Enjoying your experience?
+        <a href="./contact.html">Contact the developers</a> and let them know!
       </p>
     </footer>
   </body>
