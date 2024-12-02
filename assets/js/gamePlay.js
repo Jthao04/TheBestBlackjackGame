@@ -110,10 +110,10 @@ function scoreBeginningDeal(gameOver){
         else{
             //TODO: code for dealer wins goes here
         }
-    }else if(player.score==21)[
-        gameover==true;
+    }else if(player.score==21){
+        gameover=true;
         //TODO: code for player wins goes here
-    ]
+    }
 }
 
 function playGame(){
@@ -125,26 +125,21 @@ function playGame(){
     if(!gameOver){
         playersTurn();
         if(player.score<22){
-            dealersTurn();
+            dealersTurn()
             if(dealer.score>=22){
                 //TODO: code for dealer busted goes here
             }else{ 
-                if(player.score>=dealer.score){
-                    if(player.score > dealer.score){
-                        //TODO:code for player wins goes here
-                    }
-                    else{
-                        //TODO:code for push goes here
-                    }
+                if(player.score>dealer.score){
+                    //TODO:code for player wins goes here
+                }else if(player.score<dealer.score){
+                     //TODO:code for dealer wins goes here
+                }
                 else{
-                    //TODO:code for dealer wins goes here
+                //     //TODO: CODE FOR PUSH GOES HERE
                 }
-                }
-
             }
-        }
-        else{
-            //TODO: code for player busted goes here
+        } else{
+        //TODO: code for player busted goes here
         }
     }    
 }
