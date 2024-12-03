@@ -18,7 +18,6 @@ function hideModal() {
 
 
 
-
 function addCardToScore(theHand) {
     const lastCardDealt = theHand.cards.length - 1;
     let theCardValue = parseInt(theHand.cards[lastCardDealt].value);
