@@ -313,7 +313,6 @@ footer p {
 /* //////////Modal////////////// */
 /* ///////////////////////////// */
 #modal {
-  display: flex;
   opacity: 100%;
   justify-content: center;
   align-items: center;
