@@ -445,15 +445,15 @@ class UI {
             return !exists
         });
 
-        // Add the new cards into the deck
-        graphicsUpdate.forEach(cardObject => {
 
-            const suit = cardObject.suit
-            const cardElement = createCard(cardObject.value, suit)
+        // // Add one new cards into the deck
+        const suit = graphicsUpdate[0].suit;
+        const value = graphicsUpdate[0].value;
+        const cardElement = createCard(value, suit);
 
-            this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
-            this.cardsDealt++
-        });
+        this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
+        this.cardsDealt++
+
 
     }
 
