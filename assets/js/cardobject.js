@@ -523,3 +523,8 @@ class UI {
 
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
+
+
+function runningScore() {
+
+}
