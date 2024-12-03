@@ -7,6 +7,11 @@ function showModal(winnerString) {
     modal.style.display = "flex";
     modalTextDisplay.textContent = modalText;
 }
+function hideModal() {
+    const modal = document.querySelector("#modal");
+    modal.style.display = "none";
+}
+
 
 
 
@@ -51,6 +56,8 @@ function clearHands() {
     dealer.cards = [];
     dealer.score = 0;
     dealer.ace = false;
+
+    ui.init(player.cards, dealer.cards, deck.cards)
 }
 
 function dealBeginningHands() {
@@ -161,3 +168,11 @@ function intitGame() {
 
 intitGame();
 
+function playAgain() {
+    clearHands()
+    playGame()
+    hideModal()
+}
+
+const playAgainBttn = document.querySelector("#modal > div > div > div.modal-footer > button.btn.btn-primary");
+playAgainBttn.addEventListener("click", playAgain)

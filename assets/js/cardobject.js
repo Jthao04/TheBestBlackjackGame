@@ -345,7 +345,39 @@ class UI {
     }
 
     revealCard() {
+        function getTotal(hand) {
+            const aces = []
+            const values = []
+            let total = 0;
+
+            // Remove the aces as they must be added last
+            hand.forEach(card => {
+                if (card.value === 0) {
+                    aces.push(card.value)
+                } else { values.push(card.value) }
+            })
+
+            // If the card is a 1-10 append the value; otherwise add 10 for a face card
+            values.forEach(value => {
+                if (value < 10) {
+                    total += value + 1
+                } else {
+                    total += 10
+                }
+            })
+
+            aces.forEach(value => {
+                total += 1
+                if (total + 10 <= 21) {
+                    total += 10
+                }
+            })
+
+            return total
+        }
+
         this.dealerBoardDisplay.dataset.gameOver = "true"
+        this.dealerBoardDisplay.previousElementSibling.textContent = getTotal(this.dealerHand)
         return
     }
 
@@ -445,7 +477,7 @@ class UI {
 
             aces.forEach(value => {
                 total += 1
-                if (total + 10 < 21) {
+                if (total + 10 <= 21) {
                     total += 10
                 }
             })
@@ -453,7 +485,6 @@ class UI {
             return total
         }
 
-        this.dealerBoardDisplay.previousElementSibling.textContent = getTotal(this.dealerHand)
         this.playerBoardDisplay.previousElementSibling.textContent = getTotal(this.playerHand)
     }
 
@@ -486,14 +517,6 @@ class UI {
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
 
-const playerBoard = []
-const dealerBoard = []
-const theDeck = []
-
-
-
-ui.init(playerBoard, dealerBoard, theDeck)
-ui.start()
 
 // for (let i = 0; i < 4; i++) {
 //     const card0 = {
