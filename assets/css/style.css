@@ -308,3 +308,13 @@ footer {
 footer p {
   position: relative;
 }
+
+/* ///////////////////////////// */
+/* //////////Modal////////////// */
+/* ///////////////////////////// */
+#modal {
+  display: flex;
+  opacity: 100%;
+  justify-content: center;
+  align-items: center;
+}
