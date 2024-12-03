@@ -9,6 +9,7 @@ function showModal(winnerString) {
 }
 function hideModal() {
     const modal = document.querySelector("#modal");
+    ui.hideCard()
     modal.style.display = "none";
 }
 
