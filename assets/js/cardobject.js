@@ -447,12 +447,14 @@ class UI {
 
 
         // // Add one new cards into the deck
-        const suit = graphicsUpdate[0].suit;
-        const value = graphicsUpdate[0].value;
-        const cardElement = createCard(value, suit);
+        if (graphicsUpdate.length > 0) {
+            const suit = graphicsUpdate[0].suit;
+            const value = graphicsUpdate[0].value;
+            const cardElement = createCard(value, suit);
 
-        this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
-        this.cardsDealt++
+            this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
+            this.cardsDealt++
+        }
 
 
     }
