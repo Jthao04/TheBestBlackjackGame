@@ -1,22 +1,3 @@
-/*
-
-AceCheck For Dealer
-Player Hand
-Dealer Hand
-Display Outcome
-Clear Board
-until player quits
-Side note: the routine(s) that will deal the hands will call the function that will place the card(s) on the 
-table.
-For sake of coding the deck variable needs to be global.  The hands also should be global or they 
-should be a nested object so it only requires to pass and return the one object through out the game 
-play.
-Hand = {
-cards[],
-score
-}
-players = {player: hand, dealer: hand}
-*/
 function addCardToScore(theHand){
     const lastCardDealt = theHand.cards.length - 1;
     let theCardValue = parseInt(theHand.cards[lastCardDealt].value);
@@ -104,7 +85,7 @@ hitEl.addEventListener('click', function () {
             dealersTurn();
         }
         else{
-            //TODO:: Player Busted
+            showModal("You Busted! You Lose!");
         }
     }
 });
@@ -113,14 +94,14 @@ hitEl.addEventListener('click', function () {
 stayEl.addEventListener('click', function () {
     dealersTurn()
     if(dealer.score>=22){
-        //TODO: code for dealer busted goes here
+        showModal("The Dealer Busted! You Win!");
     }else{ 
         if(player.score>dealer.score){
-            //TODO:code for player wins goes here
+            showModal("You Win!!");
         }else if(player.score<dealer.score){
-            //TODO:code for dealer wins goes here
+            showModal("You Lose");
         }else{
-            //TODO: CODE FOR PUSH GOES HERE
+            showModal("You Pushed With The Dealer")
         }
         }
 });
@@ -132,14 +113,14 @@ function scoreBeginningDeal(gameOver){
     if(dealer.score==21 && dealer.cards[1].value ==0){
         gameOver=true;
         if(player.score==21){
-            //TODO: code for push goes here
+            showModal("What are the odds?  You pushed with the dealer's blackjack!")
         }
         else{
-            //TODO: code for dealer wins goes here
+            showModal("The dealer wins with a BLACKJACK");
         }
     }else if(player.score==21){
         gameover=true;
-        //TODO: code for player wins goes here
+        showModal("You win with a BLACKJACK!!!");
     }
 }
 
