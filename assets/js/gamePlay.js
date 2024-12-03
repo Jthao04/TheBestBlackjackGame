@@ -107,6 +107,8 @@ function playersTurn() {
             }
             else {
                 showModal("You Busted! You Lose!");
+                score.dealerWin()
+
             }
         }
     });
@@ -116,11 +118,15 @@ function playersTurn() {
         dealersTurn()
         if (dealer.score >= 22) {
             showModal("The Dealer Busted! You Win!");
+            score.playerWin()
         } else {
             if (player.score > dealer.score) {
+                score.playerWin()
                 showModal("You Win!!");
+
             } else if (player.score < dealer.score) {
                 showModal("You Lose");
+                score.dealerWin()
             } else {
                 showModal("You Pushed With The Dealer")
             }
@@ -138,10 +144,12 @@ function scoreBeginningDeal(gameOver) {
         }
         else {
             showModal("The dealer wins with a BLACKJACK");
+            score.dealerWin()
         }
     } else if (player.score == 21) {
         gameover = true;
         showModal("You win with a BLACKJACK!!!");
+        score.playerWin()
     }
 }
 

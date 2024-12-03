@@ -255,6 +255,7 @@ class ScoreKeeper {
         if (saved) {
             score = parseInt(saved)
         }
+        console.log(score)
         return score
     }
     dealerWin() {
@@ -262,8 +263,10 @@ class ScoreKeeper {
         this.saveScore()
     }
     playerWin() {
+        console.log(this.playerScore)
         this.playerScore++;
         this.saveScore()
+        console.log(this.playerScore)
     }
 }
 
