@@ -470,8 +470,9 @@ class UI {
         }
 
         // Update both Tables
-        this.updateTable(this.dealerHand, this.dealerBoardDisplay)
         this.updateTable(this.playerHand, this.playerBoardDisplay)
+        this.updateTable(this.dealerHand, this.dealerBoardDisplay)
+
         this.updateScore()
 
         requestAnimationFrame(this.update)
