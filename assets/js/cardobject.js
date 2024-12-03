@@ -346,6 +346,7 @@ class UI {
 
     revealCard() {
         this.dealerBoardDisplay.dataset.gameOver = "true"
+        this.dealerBoardDisplay.previousElementSibling.textContent = getTotal(this.dealerHand)
         return
     }
 
@@ -445,7 +446,7 @@ class UI {
 
             aces.forEach(value => {
                 total += 1
-                if (total + 10 < 21) {
+                if (total + 10 <= 21) {
                     total += 10
                 }
             })
@@ -453,7 +454,6 @@ class UI {
             return total
         }
 
-        this.dealerBoardDisplay.previousElementSibling.textContent = getTotal(this.dealerHand)
         this.playerBoardDisplay.previousElementSibling.textContent = getTotal(this.playerHand)
     }
 
@@ -484,22 +484,3 @@ class UI {
 
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
-
-const playerBoard = []
-const dealerBoard = []
-const theDeck = []
-
-
-
-ui.init(playerBoard, dealerBoard, theDeck)
-ui.start()
-
-// for (let i = 0; i < 4; i++) {
-//     const card0 = {
-//         value: i,
-//         suit: i % 4
-//     }
-//     const card1 = card0
-//     dealerBoard.push(card0)
-//     playerBoard.push(card1)
-// }
