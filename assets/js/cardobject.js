@@ -229,8 +229,45 @@ function createCard(value, suit) {
 
 
 
+class ScoreKeeper {
+    constructor() {
+        this.playerStorageKey = "player"
+        this.dealerStorageKey = "dealer"
+        this.playerScore = this.loadPlayerScore()
+        this.dealerScore = this.loadDealerScore()
 
+    }
+    saveScore() {
+        localStorage.setItem(this.playerStorageKey, this.playerScore)
+        localStorage.setItem(this.dealerStorageKey, this.dealerScore)
+    }
+    loadPlayerScore() {
+        let score = 0;
+        const saved = localStorage.getItem(this.playerStorageKey)
+        if (saved) {
+            score = parseInt(saved)
+        }
+        return score
+    }
+    loadDealerScore() {
+        let score = 0;
+        const saved = localStorage.getItem(this.dealerStorageKey)
+        if (saved) {
+            score = parseInt(saved)
+        }
+        return score
+    }
+    dealerWin() {
+        this.dealerScore++
+        this.saveScore()
+    }
+    playerWin() {
+        this.playerScore++;
+        this.saveScore()
+    }
+}
 
+const score = new ScoreKeeper
 
 
 class UI {
@@ -494,17 +531,55 @@ class UI {
 
         this.playerBoardDisplay.previousElementSibling.textContent = getTotal(this.playerHand)
     }
+    updateRunningScore() {
+        const dealerDisplay = document.querySelector("#dealerScoreBoard");
+        const playerDisplay = document.querySelector("#playerScoreBoard");
+
+        dealerDisplay.textContent = score.dealerScore
+        playerDisplay.textContent = score.playerScore
+    }
 
     async update(timestamp) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
             await new Promise((resolve) => setTimeout(resolve, 100));
         }
+        class ScoreKeeper {
+            constructor() {
+                this.playerStorageKey = "player"
+                this.dealerStorageKey = "dealer"
+                this.playerScore = this.loadPlayerScore()
+                this.dealerScore = this.loadDealerScore()
 
-        // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
-        if (this.cardsDealt > 51) {
-            this.animateShuffle()
-            this.cardsDealt = 0;
+            }
+            saveScore() {
+                localStorage.setItem(this.playerStorageKey, this.playerScore)
+                localStorage.setItem(this.dealerStorageKey, this.dealerScore)
+            }
+            loadPlayerScore() {
+                let score = 0;
+                const saved = localStorage.getItem(this.playerStorageKey)
+                if (saved) {
+                    score = parseInt(saved)
+                }
+                return score
+            }
+            loadDealerScore() {
+                let score = 0;
+                const saved = localStorage.getItem(this.dealerStorageKey)
+                if (saved) {
+                    score = parseInt(saved)
+                }
+                return score
+            }
+            dealerWin() {
+                this.dealerScore++
+                this.saveScore()
+            }
+            playerWin() {
+                this.playerScore++;
+                this.saveScore()
+            }
         }
 
         // Update both Tables
@@ -512,7 +587,7 @@ class UI {
         this.updateTable(this.dealerHand, this.dealerBoardDisplay)
 
         this.updateScore()
-
+        this.updateRunningScore()
         requestAnimationFrame(this.update)
     }
 
@@ -525,6 +600,3 @@ const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
 
 
-function runningScore() {
-
-}
