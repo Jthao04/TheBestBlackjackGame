@@ -219,7 +219,7 @@ function createCard(value, suit) {
         cardBody.style.backgroundSize = "contain"
     } else if (originalLength === 13) {
         // IF it is a king, apply the king background image and paste in a symbol
-        cardBody.style.backgroundImage = ((suit === 0 || suit === 0) && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 2) && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain";
@@ -229,8 +229,48 @@ function createCard(value, suit) {
 
 
 
+class ScoreKeeper {
+    constructor() {
+        this.playerStorageKey = "player"
+        this.dealerStorageKey = "dealer"
+        this.playerScore = this.loadPlayerScore()
+        this.dealerScore = this.loadDealerScore()
 
+    }
+    saveScore() {
+        localStorage.setItem(this.playerStorageKey, this.playerScore)
+        localStorage.setItem(this.dealerStorageKey, this.dealerScore)
+    }
+    loadPlayerScore() {
+        let score = 0;
+        const saved = localStorage.getItem(this.playerStorageKey)
+        if (saved) {
+            score = parseInt(saved)
+        }
+        return score
+    }
+    loadDealerScore() {
+        let score = 0;
+        const saved = localStorage.getItem(this.dealerStorageKey)
+        if (saved) {
+            score = parseInt(saved)
+        }
+        console.log(score)
+        return score
+    }
+    dealerWin() {
+        this.dealerScore++
+        this.saveScore()
+    }
+    playerWin() {
+        console.log(this.playerScore)
+        this.playerScore++;
+        this.saveScore()
+        console.log(this.playerScore)
+    }
+}
 
+const score = new ScoreKeeper
 
 
 class UI {
@@ -381,6 +421,11 @@ class UI {
         return
     }
 
+    hideCard() {
+        this.dealerBoardDisplay.dataset.gameOver = "false"
+        this.dealerBoardDisplay.previousElementSibling.textContent = ""
+    }
+
     // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added
     updateTable(hand, handDisplay) {
         // // If something is still animating wait and check again in 10ms
@@ -440,15 +485,17 @@ class UI {
             return !exists
         });
 
-        // Add the new cards into the deck
-        graphicsUpdate.forEach(cardObject => {
 
-            const suit = cardObject.suit
-            const cardElement = createCard(cardObject.value, suit)
+        // // Add one new cards into the deck
+        if (graphicsUpdate.length > 0) {
+            const suit = graphicsUpdate[0].suit;
+            const value = graphicsUpdate[0].value;
+            const cardElement = createCard(value, suit);
 
             this.slideFromTo(cardElement, this.deckGraphic, handDisplay)
             this.cardsDealt++
-        });
+        }
+
 
     }
 
@@ -487,17 +534,55 @@ class UI {
 
         this.playerBoardDisplay.previousElementSibling.textContent = getTotal(this.playerHand)
     }
+    updateRunningScore() {
+        const dealerDisplay = document.querySelector("#dealerScoreBoard");
+        const playerDisplay = document.querySelector("#playerScoreBoard");
+
+        dealerDisplay.textContent = score.dealerScore
+        playerDisplay.textContent = score.playerScore
+    }
 
     async update(timestamp) {
         // If something is still animating wait and check again in 10ms
         while (this.active) {
             await new Promise((resolve) => setTimeout(resolve, 100));
         }
+        class ScoreKeeper {
+            constructor() {
+                this.playerStorageKey = "player"
+                this.dealerStorageKey = "dealer"
+                this.playerScore = this.loadPlayerScore()
+                this.dealerScore = this.loadDealerScore()
 
-        // IF 52 cards have been dealt do the shuffle animation and reset the dealt cards counter
-        if (this.cardsDealt > 51) {
-            this.animateShuffle()
-            this.cardsDealt = 0;
+            }
+            saveScore() {
+                localStorage.setItem(this.playerStorageKey, this.playerScore)
+                localStorage.setItem(this.dealerStorageKey, this.dealerScore)
+            }
+            loadPlayerScore() {
+                let score = 0;
+                const saved = localStorage.getItem(this.playerStorageKey)
+                if (saved) {
+                    score = parseInt(saved)
+                }
+                return score
+            }
+            loadDealerScore() {
+                let score = 0;
+                const saved = localStorage.getItem(this.dealerStorageKey)
+                if (saved) {
+                    score = parseInt(saved)
+                }
+                return score
+            }
+            dealerWin() {
+                this.dealerScore++
+                this.saveScore()
+            }
+            playerWin() {
+                this.playerScore++;
+                this.saveScore()
+            }
         }
 
         // Update both Tables
@@ -505,7 +590,7 @@ class UI {
         this.updateTable(this.dealerHand, this.dealerBoardDisplay)
 
         this.updateScore()
-
+        this.updateRunningScore()
         requestAnimationFrame(this.update)
     }
 
@@ -518,12 +603,3 @@ const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
 
 
-// for (let i = 0; i < 4; i++) {
-//     const card0 = {
-//         value: i,
-//         suit: i % 4
-//     }
-//     const card1 = card0
-//     dealerBoard.push(card0)
-//     playerBoard.push(card1)
-// }

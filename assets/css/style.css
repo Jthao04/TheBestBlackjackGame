@@ -296,7 +296,6 @@ main {
 /* //////////Footer///////////// */
 /* ///////////////////////////// */
 footer {
-  flex: 1;
   background-color: var(--headerBlack);
   color: var(--tableWhite);
   position: absolute;
@@ -307,6 +306,7 @@ footer {
 }
 footer p {
   position: relative;
+  margin-bottom: 0;
 }
 
 /* ///////////////////////////// */
@@ -316,4 +316,25 @@ footer p {
   opacity: 100%;
   justify-content: center;
   align-items: center;
+  background-color: var(--translucentGray);
+}
+
+/* ///////////////////////////// */
+/* //////////Running Score////// */
+/* ///////////////////////////// */
+.scoreboard {
+  position: absolute;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scoreboard > div {
+  display: flex;
+  gap: 2rem;
+}
+
+.scoreboard h3 {
+  display: flex;
+  gap: 5px;
 }

@@ -32,12 +32,12 @@
       <section class="table">
         <div class="playArea">
           <h2>Dealer</h2>
-          <p class="score" id="dealerScore">0</p>
+          <p class="score" id="dealerScore"></p>
           <div id="dealer" data-game-over="false"></div>
         </div>
         <div class="playArea">
           <h2>Player</h2>
-          <p class="score" id="playerScore">0</p>
+          <p class="score" id="playerScore"></p>
           <div id="player"></div>
         </div>
         <div class="deck" id="deck" data-shuffle="false">
@@ -48,6 +48,19 @@
         </div>
       </section>
       <section id="playButtons">
+        <div class="scoreboard">
+          <h2>Hands Won</h2>
+          <div>
+            <h3>
+              House:
+              <p id="dealerScoreBoard">0</p>
+            </h3>
+            <h3>
+              Player:
+              <p id="playerScoreBoard">0</p>
+            </h3>
+          </div>
+        </div>
         <button class="pure-button" id="hit">
           <p>HIT</p>
         </button>
@@ -58,8 +71,9 @@
     </main>
     <footer>
       <p>
-        Enjoying your experience?
-        <a href="./contact.html">Contact the developers</a> and let them know!
+        <a href="https://github.com/Jthao04/projectOne"
+          >Visit out repository!</a
+        >
       </p>
     </footer>
 
@@ -68,7 +82,6 @@
       id="modal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
     >
       <div class="modal-dialog">
         <div class="modal-content">

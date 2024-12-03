@@ -6,9 +6,12 @@ function showModal(winnerString) {
 
     modal.style.display = "flex";
     modalTextDisplay.textContent = modalText;
+
+    hitEl.removeEventListener("click", hit)
 }
 function hideModal() {
     const modal = document.querySelector("#modal");
+    ui.hideCard()
     modal.style.display = "none";
 }
 
@@ -89,8 +92,25 @@ function dealersTurn() {
     }
 }
 
+const hitEl = document.querySelector('#hit');
+const stayEl = document.querySelector('#stay');
 
-function playersTurn() {
+hitEl.addEventListener('click', function () {
+    hit()
+});
+stayEl.addEventListener('click', function () {
+    stay()
+});
+
+
+
+function hit() {
+    card = drawCard();
+    player.cards.push(card);
+    addCardToScore(player);
+    if (player.score >= 21) {
+        if (player.score == 21) {
+            dealersTurn();
 
 
 // Attach event listener to hit button element
@@ -138,24 +158,24 @@ stayEl.addEventListener('click', function () {
             }
 
         }
-    });
-
-    // Attach event listener to decrement button element
-    stayEl.addEventListener('click', function () {
-        dealersTurn()
-        if (dealer.score >= 22) {
-            showModal("The Dealer Busted! You Win!");
-        } else {
-            if (player.score > dealer.score) {
-                showModal("You Win!!");
-            } else if (player.score < dealer.score) {
-                showModal("You Lose");
-            } else {
-                showModal("You Pushed With The Dealer")
-            }
+        else {
+            showModal("You Busted! You Lose!");
         }
-    });
-
+    }
+}
+function stay() {
+    dealersTurn()
+    if (dealer.score >= 22) {
+        showModal("The Dealer Busted! You Win!");
+    } else {
+        if (player.score > dealer.score) {
+            showModal("You Win!!");
+        } else if (player.score < dealer.score) {
+            showModal("You Lose");
+        } else {
+            showModal("You Pushed With The Dealer")
+        }
+    }
 }
 
 
@@ -167,11 +187,14 @@ function scoreBeginningDeal(gameOver) {
         }
         else {
             showModal("The dealer wins with a BLACKJACK");
+            score.dealerWin()
         }
     } else if (player.score == 21) {
         gameover = true;
         showModal("You win with a BLACKJACK!!!");
+        score.playerWin()
     }
+    return gameOver
 }
 
 function playGame() {
@@ -181,7 +204,9 @@ function playGame() {
     gameOver = scoreBeginningDeal(gameOver);
 
     if (!gameOver) {
-        playersTurn();
+        console.log("Here")
+    } else {
+        console.log("Not here")
     }
 }
 
