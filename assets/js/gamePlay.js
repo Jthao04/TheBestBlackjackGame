@@ -99,27 +99,30 @@ hitEl.addEventListener('click', function () {
     card = drawCard();
     player.cards.push(card);
     addCardToScore(player);
+    if(player.score>=21){
+        if(player.score=21){
+            dealersTurn();
+        }
+        else{
+            //TODO:: Player Busted
+        }
+    }
 });
 
 // Attach event listener to decrement button element
 stayEl.addEventListener('click', function () {
-    if(player.score<22){
-        dealersTurn()
-        if(dealer.score>=22){
-            //TODO: code for dealer busted goes here
-        }else{ 
-            if(player.score>dealer.score){
-                //TODO:code for player wins goes here
-            }else if(player.score<dealer.score){
-                 //TODO:code for dealer wins goes here
-            }
-            else{
-            //     //TODO: CODE FOR PUSH GOES HERE
-            }
+    dealersTurn()
+    if(dealer.score>=22){
+        //TODO: code for dealer busted goes here
+    }else{ 
+        if(player.score>dealer.score){
+            //TODO:code for player wins goes here
+        }else if(player.score<dealer.score){
+            //TODO:code for dealer wins goes here
+        }else{
+            //TODO: CODE FOR PUSH GOES HERE
         }
-    } else{
-    //TODO: code for player busted goes here
-    }
+        }
 });
   
 }
