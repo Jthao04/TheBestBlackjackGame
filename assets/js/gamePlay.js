@@ -81,7 +81,7 @@ hitEl.addEventListener('click', function () {
     player.cards.push(card);
     addCardToScore(player);
     if(player.score>=21){
-        if(player.score=21){
+        if(player.score==21){
             dealersTurn();
         }
         else{
