@@ -219,7 +219,7 @@ function createCard(value, suit) {
         cardBody.style.backgroundSize = "contain"
     } else if (originalLength === 13) {
         // IF it is a king, apply the king background image and paste in a symbol
-        cardBody.style.backgroundImage = ((suit === 0 || suit === 0) && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
+        cardBody.style.backgroundImage = ((suit === 0 || suit === 2) && 'url("./assets/cardAssets/svg/kingRed.svg")') || 'url("./assets/cardAssets/svg/kingBlack.svg")'
         cardBody.style.backgroundRepeat = "no-repeat";
         cardBody.style.backgroundPosition = "center";
         cardBody.style.backgroundSize = "contain";
