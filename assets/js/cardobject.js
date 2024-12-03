@@ -381,6 +381,11 @@ class UI {
         return
     }
 
+    hideCard() {
+        this.dealerBoardDisplay.dataset.gameOver = "false"
+        this.dealerBoardDisplay.previousElementSibling.textContent = ""
+    }
+
     // Provide this function with the current hand and the where to display and it will make sure the appropiate cards are added
     updateTable(hand, handDisplay) {
         // // If something is still animating wait and check again in 10ms
@@ -516,14 +521,3 @@ class UI {
 
 const ui = new UI;
 ui.setup(document.querySelector("#player"), document.querySelector("#dealer"), document.querySelector("#deck"))
-
-
-// for (let i = 0; i < 4; i++) {
-//     const card0 = {
-//         value: i,
-//         suit: i % 4
-//     }
-//     const card1 = card0
-//     dealerBoard.push(card0)
-//     playerBoard.push(card1)
-// }
