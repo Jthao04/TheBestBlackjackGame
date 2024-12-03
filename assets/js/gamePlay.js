@@ -102,7 +102,6 @@ stayEl.addEventListener('click', function () {
 });
 
 
-
 function hit() {
     card = drawCard();
     player.cards.push(card);
@@ -110,52 +109,6 @@ function hit() {
     if (player.score >= 21) {
         if (player.score == 21) {
             dealersTurn();
-
-
-// Attach event listener to hit button element
-hitEl.addEventListener('click', function () {
-    card = drawCard();
-    player.cards.push(card);
-    addCardToScore(player);
-    if(player.score>=21){
-        if(player.score==21){
-            dealersTurn();
-        }
-        else{
-            showModal("You Busted! You Lose!");
-        }
-    }
-});
-
-// Attach event listener to decrement button element
-stayEl.addEventListener('click', function () {
-    dealersTurn()
-    if(dealer.score>=22){
-        showModal("The Dealer Busted! You Win!");
-    }else{ 
-        if(player.score>dealer.score){
-            showModal("You Win!!");
-        }else if(player.score<dealer.score){
-            showModal("You Lose");
-        }else{
-            showModal("You Pushed With The Dealer")
-
-    const hitEl = document.querySelector('#hit');
-    const stayEl = document.querySelector('#stay');
-
-    // Attach event listener to hit button element
-    hitEl.addEventListener('click', function () {
-        card = drawCard();
-        player.cards.push(card);
-        addCardToScore(player);
-        if (player.score >= 21) {
-            if (player.score == 21) {
-                dealersTurn();
-            }
-            else {
-                showModal("You Busted! You Lose!");
-            }
-
         }
         else {
             showModal("You Busted! You Lose!");
