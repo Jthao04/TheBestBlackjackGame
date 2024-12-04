@@ -190,7 +190,7 @@ main {
 /* ///////////////////////////// */
 /* ////////Card Styles////////// */
 /* ///////////////////////////// */
-.playingCard {
+.playArea .playingCard {
   /*Display stuff*/
   display: flex;
   align-items: center;
@@ -200,12 +200,12 @@ main {
   width: clamp(15px, 12vh, 12vh);
   height: 80%;
   margin-left: -30px;
-  padding: 15px;
   border-radius: 10px;
   background-color: hsl(48, 39%, 83%);
   /*Miscellaneous*/
   box-shadow: var(--shadow);
   overflow: hidden;
+  padding: 0 1vw;
 }
 .symbolSpan {
   /*Positioning stuff*/
@@ -214,6 +214,14 @@ main {
   font-family: serif;
   font-size: clamp(1px, 2vw, 20px);
   font-weight: bolder;
+  width: clamp(1px, 2vw, 20px);
+}
+#player > div > div,
+#dealer > div > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-bottom: -20%;
 }
 
 /* ///////////////////////////// */
@@ -276,6 +284,7 @@ main {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* ///////////////////////////// */
 /* ///////Playing Buttons/////// */
 /* ///////////////////////////// */

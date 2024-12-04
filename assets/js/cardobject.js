@@ -36,8 +36,8 @@ function createCard(value, suit) {
         const span1 = createSpan()
 
         // Position each span individually and rotate the second
-        span0.style.left = "5%";
-        span0.style.top = "5%";
+        span0.style.left = "1%";
+        span0.style.top = "1%";
 
         span1.style.right = "5%";
         span1.style.bottom = "5%"
@@ -71,8 +71,6 @@ function createCard(value, suit) {
             if (inputNumber === 11) {
                 span0.textContent = "J";
                 span1.textContent = "J";
-                span0.style.width = '20%'
-                span1.style.width = '20%'
 
                 span0.appendChild(symbol0)
                 span1.appendChild(symbol1)
@@ -137,10 +135,8 @@ function createCard(value, suit) {
         const columns = []
         for (let i = 0; i < 3; i++) {
             const column = document.createElement("div");
-            column.style.display = "flex";
-            column.style.flexDirection = "column";
-            column.style.flex = "1";
-            column.style.height = "90%"
+            column.style.height = "80%"
+            // column.style.marginTop = "10%"
             columns.push(column);
 
         }
