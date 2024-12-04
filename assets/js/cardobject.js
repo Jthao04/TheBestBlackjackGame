@@ -135,10 +135,7 @@ function createCard(value, suit) {
         const columns = []
         for (let i = 0; i < 3; i++) {
             const column = document.createElement("div");
-            column.style.height = "80%"
-            // column.style.marginTop = "10%"
             columns.push(column);
-
         }
         return columns;
     }
