@@ -142,11 +142,12 @@ function intitGame() {
     ui.init(player.cards, dealer.cards, deck.cards);
     ui.start();
     playGame();
-    // TODO:  This is where the code goes for when the player quits the game. 
 }
+
 intitGame();
 function playAgain() {
-    clearHands()
+    clearHands();
+    if(deck.marker)deck.create();
     playGame()
     hideModal()
 }
