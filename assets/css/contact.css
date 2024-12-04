@@ -172,6 +172,8 @@ main {
   border-radius: inherit;
   /*Typography stuff*/
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 .contactCard div {
   /*Box model stuff*/
