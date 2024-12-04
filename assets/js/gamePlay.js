@@ -3,6 +3,11 @@ function showModal(winnerString) {
     const modal = document.querySelector("#modal");
     const modalTextDisplay = document.querySelector("#modalLabel");
     const modalText = `${winnerString}`
+    const playAgain = document.querySelector("#playAgain")
+    setTimeout(() => {
+        playAgain.focus();
+    }, 10);
+
     modal.style.display = "flex";
     modalTextDisplay.textContent = modalText;
     hitEl.removeEventListener("click", hit)
@@ -147,9 +152,14 @@ function intitGame() {
 intitGame();
 function playAgain() {
     clearHands();
-    if(deck.marker)deck.create();
+    if (deck.marker) deck.create();
     playGame()
     hideModal()
 }
 const playAgainBttn = document.querySelector("#modal > div > div > div.modal-footer > button.btn.btn-primary");
-playAgainBttn.addEventListener("click", playAgain)
+playAgainBttn.addEventListener("click", playAgain);
+
+const endGame = document.querySelector("#modal > div > div > div.modal-footer > button.btn.btn-secondary");
+endGame.addEventListener("click", () => {
+    hideModal()
+})
