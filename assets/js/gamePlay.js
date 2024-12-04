@@ -3,10 +3,8 @@ function showModal(winnerString) {
     const modal = document.querySelector("#modal");
     const modalTextDisplay = document.querySelector("#modalLabel");
     const modalText = `${winnerString}`
-
     modal.style.display = "flex";
     modalTextDisplay.textContent = modalText;
-
     hitEl.removeEventListener("click", hit)
 }
 function hideModal() {
@@ -14,15 +12,10 @@ function hideModal() {
     ui.hideCard()
     modal.style.display = "none";
 }
-
-
-
-
 function addCardToScore(theHand) {
     const lastCardDealt = theHand.cards.length - 1;
     let theCardValue = parseInt(theHand.cards[lastCardDealt].value);
     theCardValue++;
-
     switch (true) {
         case (theCardValue == 1):
             //The card is an ace which can be equal to 1 or 11
@@ -47,42 +40,31 @@ function addCardToScore(theHand) {
         theHand.score -= 10;
         theHand.ace = false;
     };
-
 }
-
 function clearHands() {
     player.cards = [];
     player.score = 0;
     player.ace = false;
-
     dealer.cards = [];
     dealer.score = 0;
     dealer.ace = false;
-
     ui.init(player.cards, dealer.cards, deck.cards)
 }
-
 function dealBeginningHands() {
-
     let card = {};
-
     card = drawCard();
     player.cards.push(card);
     addCardToScore(player);
-
     card = drawCard();
     dealer.cards.push(card);
     addCardToScore(dealer);
-
     card = drawCard();
     player.cards.push(card);
     addCardToScore(player);
-
     card = drawCard();
     dealer.cards.push(card);
     addCardToScore(dealer);
 }
-
 function dealersTurn() {
     while (dealer.score < 17) {
         card = drawCard();
@@ -90,10 +72,8 @@ function dealersTurn() {
         addCardToScore(dealer);
     }
 }
-
 const hitEl = document.querySelector('#hit');
 const stayEl = document.querySelector('#stay');
-
 hitEl.addEventListener('click', function () {
     hit()
 });
@@ -110,55 +90,10 @@ function hit() {
     if (player.score >= 21) {
         if (player.score == 21) {
             dealersTurn();
-
-
-// Attach event listener to hit button element
-hitEl.addEventListener('click', function () {
-    card = drawCard();
-    player.cards.push(card);
-    addCardToScore(player);
-    if(player.score>=21){
-        if(player.score==21){
-            dealersTurn();
-        }
-        else{
-            showModal("You Busted! You Lose!");
-        }
-    }
-});
-
-// Attach event listener to decrement button element
-stayEl.addEventListener('click', function () {
-    dealersTurn()
-    if(dealer.score>=22){
-        showModal("The Dealer Busted! You Win!");
-    }else{ 
-        if(player.score>dealer.score){
-            showModal("You Win!!");
-        }else if(player.score<dealer.score){
-            showModal("You Lose");
-        }else{
-            showModal("You Pushed With The Dealer")
-
-    const hitEl = document.querySelector('#hit');
-    const stayEl = document.querySelector('#stay');
-
-    // Attach event listener to hit button element
-    hitEl.addEventListener('click', function () {
-        card = drawCard();
-        player.cards.push(card);
-        addCardToScore(player);
-        if (player.score >= 21) {
-            if (player.score == 21) {
-                dealersTurn();
-            }
-            else {
-                showModal("You Busted! You Lose!");
-            }
-
         }
         else {
             showModal("You Busted! You Lose!");
+            score.dealerWin()
         }
     }
 }
@@ -166,18 +101,20 @@ function stay() {
     dealersTurn()
     if (dealer.score >= 22) {
         showModal("The Dealer Busted! You Win!");
+        score.playerWin()
     } else {
         if (player.score > dealer.score) {
             showModal("You Win!!");
+            score.playerWin()
+
         } else if (player.score < dealer.score) {
             showModal("You Lose");
+            score.dealerWin()
         } else {
             showModal("You Pushed With The Dealer")
         }
     }
 }
-
-
 function scoreBeginningDeal(gameOver) {
     if (dealer.score == 21 && dealer.cards[1].value == 0) {
         gameOver = true;
@@ -195,38 +132,23 @@ function scoreBeginningDeal(gameOver) {
     }
     return gameOver
 }
-
 function playGame() {
     let gameOver = false;
-
     dealBeginningHands();
     gameOver = scoreBeginningDeal(gameOver);
-
-    if (!gameOver) {
-        console.log("Here")
-    } else {
-        console.log("Not here")
-    }
 }
-
-
 function intitGame() {
     deck.create();
     ui.init(player.cards, dealer.cards, deck.cards);
     ui.start();
-
     playGame();
-
     // TODO:  This is where the code goes for when the player quits the game. 
 }
-
 intitGame();
-
 function playAgain() {
     clearHands()
     playGame()
     hideModal()
 }
-
 const playAgainBttn = document.querySelector("#modal > div > div > div.modal-footer > button.btn.btn-primary");
 playAgainBttn.addEventListener("click", playAgain)
