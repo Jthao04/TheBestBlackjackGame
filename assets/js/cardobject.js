@@ -248,7 +248,6 @@ class ScoreKeeper {
         if (saved) {
             score = parseInt(saved)
         }
-        console.log(score)
         return score
     }
     dealerWin() {
@@ -256,10 +255,8 @@ class ScoreKeeper {
         this.saveScore()
     }
     playerWin() {
-        console.log(this.playerScore)
         this.playerScore++;
         this.saveScore()
-        console.log(this.playerScore)
     }
 }
 
@@ -458,7 +455,6 @@ class UI {
 
         displayed.forEach(element => {
             extraCards.forEach(cardObject => {
-                console.log()
                 if (cardObject.value === parseInt(element.dataset.value) && cardObject.suit === parseInt(element.dataset.suit)) {
                     this.slideAway(element)
                 }

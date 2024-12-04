@@ -93,6 +93,7 @@ function hit() {
         }
         else {
             showModal("You Busted! You Lose!");
+            score.dealerWin()
         }
     }
 }
@@ -100,11 +101,15 @@ function stay() {
     dealersTurn()
     if (dealer.score >= 22) {
         showModal("The Dealer Busted! You Win!");
+        score.playerWin()
     } else {
         if (player.score > dealer.score) {
             showModal("You Win!!");
+            score.playerWin()
+
         } else if (player.score < dealer.score) {
             showModal("You Lose");
+            score.dealerWin()
         } else {
             showModal("You Pushed With The Dealer")
         }
@@ -131,11 +136,6 @@ function playGame() {
     let gameOver = false;
     dealBeginningHands();
     gameOver = scoreBeginningDeal(gameOver);
-    if (!gameOver) {
-        console.log("Here")
-    } else {
-        console.log("Not here")
-    }
 }
 function intitGame() {
     deck.create();
