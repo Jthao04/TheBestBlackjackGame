@@ -33,3 +33,17 @@ End of Game:
 
 Once the round is complete (either the player stays or goes over 21, or the dealer completes their turn), the result is displayed: "You win," "You lose," or "Push."
 The player is then prompted to start a new round with "New Game".
+
+## Visit the repository
+
+# [Github](https://github.com/Jthao04/projectOne)
+
+## Screenshots
+
+![FullSceen image](./assets/images/BlackjackFullscreen.png)
+![Mobile image](./assets/images/blackjackMobile.png)
+
+## Thank You
+
+[Hearts card icon created by Freepik - Flaticon](https://www.flaticon.com/free-icons/playing-card)  
+[Playing card Icons created by IconsNova - Flaticon](https://www.flaticon.com/free-icons/clubs)
