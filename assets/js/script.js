@@ -43,14 +43,12 @@ const deck = deckObject;
 
 let player = {
     cards : [],
-    score : 0, 
-    ace : false
+    score : 0
 }
 
 let dealer = {
     cards : [],
-    score : 0, 
-    ace : false
+    score : 0
 }
 
 

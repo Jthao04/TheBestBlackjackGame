@@ -19,12 +19,10 @@ function addCardToScore(theHand) {
     switch (true) {
         case (theCardValue == 1):
             //The card is an ace which can be equal to 1 or 11
-            if (theHand.score < 12) {
-                theHand.score += 11;
-                theHand.ace = true;
-            }
-            else {
+            if (theHand.score+11>21){
                 theHand.score += 1;
+            }else {
+                theHand.score += 11;
             }
             break;
         //Cards 2 thru 9
@@ -35,19 +33,12 @@ function addCardToScore(theHand) {
         default:
             theHand.score += 10;
     }
-    //This condition is to check in the event the player busted with their last card drawn to see if they previously had an ace that was worth 11 points in the event there was an ace in the hand it subtracs 10 from the score so the current card no longer caused the player to bust.
-    if (theHand.score > 21 && theHand.ace) {
-        theHand.score -= 10;
-        theHand.ace = false;
-    };
 }
 function clearHands() {
     player.cards = [];
     player.score = 0;
-    player.ace = false;
     dealer.cards = [];
     dealer.score = 0;
-    dealer.ace = false;
     ui.init(player.cards, dealer.cards, deck.cards)
 }
 function dealBeginningHands() {
