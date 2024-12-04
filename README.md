@@ -35,8 +35,7 @@ Once the round is complete (either the player stays or goes over 21, or the deal
 The player is then prompted to start a new round with "New Game".
 
 ## Visit the repository
-
-# [Github](https://github.com/Jthao04/projectOne)
+# [Github](https://github.com/Jthao04/TheBestBlackjackGame)
 
 ## Screenshots
 
