@@ -23,12 +23,12 @@ function addCardToScore(theHand) {
     theCardValue++;
     switch (true) {
         case (theCardValue == 1):
-            theHand.ace = true;
             //The card is an ace which can be equal to 1 or 11
             if (theHand.score + 11 > 21) {
                 theHand.score += 1;
             } else {
                 theHand.score += 11;
+                theHand.ace = true;
             }
             break;
         //Cards 2 thru 9
