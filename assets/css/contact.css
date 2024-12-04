@@ -218,16 +218,21 @@ footer {
 /* /////////Footer Styles/////// */
 /* ///////////////////////////// */
 section {
+  /*Display stuff*/
   display: flex;
   justify-content: center;
-  text-align: center;
+  /*Box model stuff*/
   padding: 1rem;
+  /*Typography stuff*/
+  text-align: center;
 }
 section img {
-  height: 100px;
+  /*Box model stuff*/
   width: auto;
+  height: 100px;
 }
 section a {
+  /*Typography stuff*/
   text-decoration: none;
   color: var(--tableWhite);
 }
