@@ -194,6 +194,7 @@ main {
   /*Display stuff*/
   display: flex;
   align-items: center;
+  justify-content: center;
   /*Positioning stuff*/
   position: relative;
   /*Box model stuff*/
@@ -223,6 +224,7 @@ main {
   flex: 1;
   margin-bottom: 20%;
   height: 80%;
+  max-width: 25%;
 }
 
 /* ///////////////////////////// */
