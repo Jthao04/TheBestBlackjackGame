@@ -127,6 +127,7 @@ main {
   justify-content: center;
   /*Box model stuff*/
   padding-top: 1rem;
+  margin-bottom: 4rem;
 }
 
 /* ///////////////////////////// */
