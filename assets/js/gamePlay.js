@@ -23,6 +23,7 @@ function addCardToScore(theHand) {
     theCardValue++;
     switch (true) {
         case (theCardValue == 1):
+            theHand.ace = true;
             //The card is an ace which can be equal to 1 or 11
             if (theHand.score + 11 > 21) {
                 theHand.score += 1;
@@ -38,12 +39,18 @@ function addCardToScore(theHand) {
         default:
             theHand.score += 10;
     }
+    if(theHand.score>21 && theHand.ace){
+        theHand.score -= 10;
+        theHand.ace = false;
+    }
 }
 function clearHands() {
     player.cards = [];
     player.score = 0;
+    player.ace = false;
     dealer.cards = [];
     dealer.score = 0;
+    dealer.ace = false;
     ui.init(player.cards, dealer.cards, deck.cards)
 }
 function dealBeginningHands() {
@@ -152,5 +159,5 @@ playAgainBttn.addEventListener("click", playAgain);
 
 const endGame = document.querySelector("#modal > div > div > div.modal-footer > button.btn.btn-secondary");
 endGame.addEventListener("click", () => {
-    window.location.href = "../contact.html"
+    window.location.href = "./contact.html"
 })
